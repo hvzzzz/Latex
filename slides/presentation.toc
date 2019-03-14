@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Itemize}{3}{0}{1}
+\beamer@sectionintoc {2}{Images}{7}{0}{2}
+\beamer@sectionintoc {3}{Tables}{9}{0}{3}
+\beamer@sectionintoc {4}{References}{11}{0}{4}

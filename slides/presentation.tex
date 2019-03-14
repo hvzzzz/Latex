@@ -1,0 +1,141 @@
+\documentclass[english,svgnames,notes=hide,12pt]{beamer}
+\usepackage{macros-ohp}
+
+\def\seminarname{Machine Learning Seminar}
+\def\presentationtitle{Introduction to Machine Learning}
+
+\title{\large\seminarname:\\\large\presentationtitle}
+\author{Author Name\\
+    \small University
+}
+
+% Fill the date or leave it blank to not display it
+\date{January 28th, 2019}
+
+\begin{document}
+\thispagestyle{empty}
+%\begin{frame}[plain] %put [plain] at the end to get rid of the page number on this page
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\section{Itemize}
+\begin{frame}
+\frametitle{Itemize}
+\begin{itemize}[<+->]
+    \item First point
+    \item Second point
+    \item Third point
+\end{itemize}
+\end{frame}
+
+\section{Images}
+\begin{frame}
+	\frametitle{Slide 1}
+	Content of slide 1
+\end{frame}
+
+\section{Tables}
+\begin{frame}
+	\frametitle{Slide 2}
+\end{frame}
+
+\section{References}
+\begin{frame}
+    \frametitle{How to use references}
+    \shortciteNP{Ke2005} mentions that the Peter Pan is a creation of your imagination, however, it is also discussed that some people's imagination is not suitable to create such character \shortcite{Ke2005}.
+\end{frame}
+
+\section*{Bibliography}
+\begin{frame}[allowframebreaks]
+    \frametitle{References}
+    \fontsize{5pt}{6.2}\selectfont
+    \bibliographystyle{apacite}
+    \renewcommand{\bibliographytypesize}{\small}
+    \bibliography{presentation}
+\end{frame}
+
+\end{document}
+\def\seminarname{Machine Learning Seminar}
+\def\presentationtitle{Introduction to Machine Learning}
+
+\title{\large\seminarname:\\\large\presentationtitle}
+\author{Author Name\\
+    \small University
+}
+
+%Please make sure the tex is compiled twice to have all the images displayed correctly.
+
+%Fill the date or leave it blank to not display it
+\date{January 28th, 2019}
+
+\begin{document}
+\thispagestyle{empty}
+%\begin{frame}[plain] %put [plain] at the end to get rid of the page number on this page
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\section{Itemize}
+\begin{frame}
+\frametitle{Itemize}
+\begin{itemize}[<+->]
+    \item First point
+    \item Second point
+    \item Third point
+\end{itemize}
+\end{frame}
+
+\section{Images}
+\begin{frame}
+	\frametitle{Slide 1}
+	Content of slide 1
+\end{frame}
+
+\section{Tables}
+\begin{frame}
+	\frametitle{Slide 2}
+\end{frame}
+
+\section{References}
+\begin{frame}
+    \frametitle{How to use references}
+    \shortciteNP{Ke2005} mentions that the Peter Pan is a creation of your imagination, however, it is also discussed that some people's imagination is not suitable to create such character \shortcite{Ke2005}.
+\end{frame}
+
+\section*{Bibliography}
+\begin{frame}[allowframebreaks]
+    \frametitle{References}
+    \fontsize{5pt}{6.2}\selectfont
+    \bibliographystyle{apacite}
+    \renewcommand{\bibliographytypesize}{\small}
+    \bibliography{presentation}
+\end{frame}
+
+\end{document}
