@@ -1,0 +1,230 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.05, margin=0.46in]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Hanan}{Quispe}                              % optional, remove / comment the line if not wanted
+%\address{Av. Tupac Amaru l-17  Progreso-Wanchaq}{Cusco - Perú}{}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+\email{hananquispec@outlook.com}                               % optional, remove / comment the line if not wanted
+\phone[mobile]{+51~945~810353}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+051~(084)~244791}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+%\homepage{www.johndoe.com}                         % optional, remove / comment the line if not wanted
+%\extrainfo{facebook.com/edgarrodolfo.quispecondori}                 % optional, remove / comment the line if not wanted
+%\photo[80pt][0.4pt]{foto3.jpg}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{The Best Thinks Require The Best Effort}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\section{Educaci\'on}
+\cventry{2016--Presente}{Estudiante de Ingenier\'ia Electr\'onica}{Universidad Nacional de San Antonio Abad del Cusco (UNSAAC)}{Perú}{\textit{GPA 16.16/20} {}}{}  % arguments 3 to 6 can be left empty
+%\cventry{2011--2015}{Master of Science in Computer Science Student}{University of Campinas (UNICAMP)}{Brazil}{}{Graduation in December 2018}  % arguments 3 to 6 can be left empty
+
+%\section{Master thesis}
+%\cvitem{title}{\emph{Title}}
+%\cvitem{supervisors}{Supervisors}
+%\cvitem{description}{Short thesis abstract}
+\section{Premios y Reconocimientos}
+\begin{itemize}
+\item{\textbf{UNSAAC: } 2016, Segundo Puesto en el Examen de Admision.}
+\item{\textbf{Concurso de Robotica(Tech Games Cusco): } Tercer puesto en la categoria de robot mirosot.}
+\end{itemize}
+\section{Experiencia y Proyectos}
+\begin{itemize}
+\item{2017, Participante en la organizacion del XXIV congreso internacional de Ingenier\'ia El\'ectrica,Electr\'onica y Computacion}\textbf{(INTERCON 2017)}{ Organizado por UNSAAC.} 
+\item{2018, Participante en CoreUpgrade 2018 organizado por }\textbf{Hack Space Perú.} 
+\item{2019, 3 }\textbf{ARDUINO UNO }\textit{Platform.} 
+\end{itemize}
+\section{Attended Talks}
+%\section{Projects and Experience}
+%\cventry{2016}{TYPICAL DANCE RECOGNITION USING MACHINE LEARNING}{}{}{}{}
+%\begin{itemize}
+\cventry{}{UNSAAC}{}{}{}{}	
+\begin{itemize}
+\item{2015, Participant in a talk about bioinformatics presented by the Association for Computing Machinery (ACM) Chapter Cusco.}
+\item{2015, Participant in a talk about research methods organized by UNSAAC.}
+%\end{itemize}
+%\cventry{2016}{DEEP LEARNING IN SPEECH RECOGNITION}{}{}{}{}
+%\begin{itemize}
+%\item{Survey of Deep Learning and Speech Recognition. Studied the impact of Deep Learning in Language Recognition based on the approaches used for the challenges in Automatic Speech Recognition and Understanding IEEE 2015.}
+%\end{itemize}
+%\cventry{2015}{AUTOMATION OF INSTITUTE SYSTEMS CUSCO(ISC) UNSAAC}{}{}{}{}
+%\begin{itemize}
+%\item{Implemented a software for the administration,teachers and students  of the ISC. Use of Laravel framework, PHP and a MySQL database. Documented the software using UML case tools.} 
+%\end{itemize}
+%\cventry{2015}{MACHINE LEARNING}{}{}{}{}
+%\begin{itemize}
+%\item{Implemented a spam classifier for mails using Supported Vector Machines and Octave for the project.}
+%\item{Implemented a segmented letters and digits recognizer using logistic regression and neural networks, used MatLab.}
+%\item{Use of K-means clustering for image compression based in the color and distance between points.}
+%\end{itemize}
+%\cventry{2015}{REPOSITORY OF THESIS AND STUDENT WORKS FOR UNSAAC}{}{}{}{}
+%\begin{itemize}
+%\item{Implemented a software to store, search and discuss about thesis, projects, books and homeworks of all subjects taught in the UNSAAC. Used PHP, HTML and MySQL  for the project and documented it using UML case tools.}
+%\end{itemize}
+%\cventry{2015}{RESEARCH ABOUT VEHICLE ROUTING PROBLEM}{}{}{}{}
+%\begin{itemize}
+%\item{Research and implementation of heuristic and metaheuristic methods using C++ and Java.}
+%\item{In process of develop of a approach based on heuristic methods to solve this problem}
+%\end{itemize}
+%\cventry{2014}{ASSEMBLER PROJECTS WITH PIC 16F84A}{}{}{}{}
+%\begin{itemize}
+%\item {Implemented a calculator and a  distance sensor with a final user interface controlled by a PIC and assembler.} 
+%\end{itemize}
+%\cventry{2014}{RESEARCH ON STANDARDS OF STRUCTURED WIRING}{}{}{}{}
+%\begin{itemize}
+%\item {Study of the IEEE, TIA/EIA international standards and make a comparison with the standards used in Peru.}
+%\end{itemize}
+%\cventry{2014}{TRAINING CAMP Bolivia}{Universidad Católica Bolivariana \& Universidad Tecnológica de Oruro}{Bolivia}{}{}
+%\begin{itemize}
+%\item{Master more advanced topics in competitive programming, the expositor for this camp was Ph.D. Steven Halim from Indonesia}
+%\item{Competed with the best programming teams in Bolivia and got a 2nd place in general qualification}
+%\end{itemize}
+%\cventry{2014}{TRAINING CAMP ORURO}{Universidad Tecnológica de Oruro}{Bolivia}{}{}
+%\begin{itemize}
+%\item{Competed with the best programming teams in Bolivia and got a 2nd place in general qualification}
+%\end{itemize}
+%\cventry{2014}{BOLIVIAN TRAINING CAMP}{Universidad Católica Bolivariana}{Bolivia}{}{}
+%\begin{itemize}
+%\item{Master more advanced topics in competitive programming, the expositor for this camp was Ph.D. Steven Halim from Indonesia}
+%\end{itemize}
+%\cventry{2013}{WINTER TRAINING CAMP UNI 2013}{National University of Engineering}{Lima -- Peru}{}{}
+%\begin{itemize}
+%\item{Had three ACM ICPC world finalist contestants as expositors during three weeks.}
+%\end{itemize}
+%\section{Positions of Responsibility and Extra-Curricular Activities}
+%\cvitem{2014 -- 2016}{\textbf{ACM Chapter Cusco Chair}}{}{}{}{Representative of ACM as a Student Chapter, organize events to promote Computer Science and Technology in Cusco}
+%\cvitem{2014 -- 2016}{Organized Programming Contest in Cusco, witnessing participation of over 160 students per year.}
+%\cvitem{2015}{Organized a talk about BioInformatics, witnessing participation of over 150 students from Cusco.}
+%\cvitem{2015}{Participant in CLEI 2015, Conference about research and recent works in Computer Science}
+%\cvitem{2014}{Organized series of talks about master's and doctoral thesis on research in Computer Science, witnessing participation of over 170 students from Cusco.}
+%\cvitem{2014}{Organized a C++ workshop, this workshop was oriented to beginners and had a duration 2 weekends}
+%\cvitem{2013 -- 2015}{\textbf{Programming Training Camps}}{}{}{}{}{Peruvian training Camp (2013 - 2015, topped 5 in all contest), Bolivian training Camp (2014, topped 2 in all contest)}
+\end{itemize}
+%\cventry{}{ACM International Collegiate Programming Contest (ICPC)}{2015: 6th in all Peru, 2014: 1st in the South of Peru, 2013: top 13\% participants in the South Region of Latin America}{}{}{}{}
+%\cventry{}{UNSAAC}{2013: Winner of the Cusco Programming Contest "Cuscontest", 2014:Winner of the Technology Fair UNSAAC, having develop an application using assembler for PIC 16F84A, 2012: Achieved 2nd amongst all students in the Joint Entrance Examination.}{}{}{}{}
+%\cventry{}{Colombian Competitive Programming Network}{2015: Winner of PI-DAY programming contest}{}{}{}{}
+
+%\cvitem{2015}{Qualified for the ACM (Association for Computing Machinery) ICPC'15 (International Collegiate Programming Contest) South America Finals and stood 1st in the South of Peru and 6th in all Peru}{}{}{}{}
+%\cvitem{2015}{Winner of Competitive Network PI-DAY Colombian Programming Contest}
+%\cvitem{2014}{Qualified for the ACM ICPC'14 South America Finals and stood 1st in the South of Peru}{}{}{}{}
+%\cvitem{2014}{Topped the 2\% world leaderboard in the \#282 regular round organized on Codeforces}{}{}{}
+%\cvitem{2014}{Winner of the Technology Fair UNSAAC, having develop an application using assembler for PIC 16F84A}
+%\cvitem{2013}{Winner of the Cusco Programming Contest "Cuscontest"}
+%\cvitem{2013}{Qualified for the ACM ICPC'13 South America Finals and stood amongst top 13\% participants in the South Region of Latin America(Peru, Argentina, Bolivia, Chile, Paraguay and Uruguay)}{}{}{}{}
+%\cvitem{2012}{Achieved 2nd amongst all students in the Joint Entrance Examination, conducted by the Universidad Nacional de San Antonio Abad}{}{}{}{}
+
+%\section{Languages and Technologies}
+%\begin{itemize}
+%\item{C, C++, Python, Java, HTML, PHP, CSS, C\#, MATLAB, OpenCV, Scikit-Learn, Scikit-Image} 
+%\item{Netbeans IDE, Eclipse, Visual Studio, Microsoft SQL Server, MySQL, OpenMP, Linux} 
+%\end{itemize}
+%\cvitem{{Programming Languages}}{C, C++, Python, Java, HTML, PHP, CSS, Octave, C\#, MATLAB}
+%\cvitem{{Libraries}}{OpenGL, OpenCV, RXTX(Serial Communication between Arduino boards and Java applications)}
+%\cvitem{{Platform(OS)}}{Linux, Microsoft Windows}
+%\cvitem{{Software}}{Netbeans IDE, Eclipse, Visual Studio, Microsoft SQL Server, MySQL}
+%\cvitem{{Documentation}}{          	\LaTeX, UML Diagrammer}{}{}{}{}
+\section{Relevant Courses Undertaken/Ongoing}
+\cvlistdoubleitem{Calculus}{Geometry}
+\cvlistdoubleitem{Trigonometry}{Algebra}
+\cvlistdoubleitem{Mechanics}{Physics}
+\cvlistdoubleitem{Electricity}{Magnetism}
+\cvlistdoubleitem{Thermodynamics}{Waves}
+\cvlistdoubleitem{Chemistry}{Statistic \& Probability}
+
+\section{Extracurricular Activities}
+\begin{itemize}
+\item{2018, Volunteer in various events related to Japanese cultural diffusion and Japanese language organized by }\textit{Aiki Peruvian Japanese Culture Center.}
+\item{2017, Participant in a cultural exchange with Nanzan and Sophia University students organized by }\textit{Aiki Peruvian Japanese Culture Center.} 
+\item{2017, Volunteer in the 2017 National Census organized by }\textit{INEI(National Institute os Statistic and Informatics).}
+\end{itemize}
+
+
+
+
+\section{Languages}
+\cvitemwithcomment{Spanish}{Mother tongue}{}
+\cvitemwithcomment{English}{Intermediate - Advance}{}
+\cvitemwithcomment{Portuguese}{Intermediate}{}
+\cvitemwithcomment{Japanese}{Basic}{}
+%\cvitemwithcomment{Portuguese}{Intermediate}{}
+
+
+
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+\nocite{*}
+\bibliographystyle{plain}
+%\bibliography{publications}                        % 'publications' is the name of a BibTeX file
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+
+\clearpage
+
+%\recipient{Facebook.Inc}{}
+%\date{October 28, 2015}
+%\opening{Dear Sir or Madam,}
+%\closing{Yours faithfully,}
+%\enclosure[Attached]{curriculum vit\ae{}}    
+%\makelettertitle
+
+%As you have seen i have no experience in professional works, this does not impede me to thing that i am enough good to postulate to Facebook.
+
+%In my development as a student I learned many things, the most important is that the effort is necessary for success. I personally believe that I am a capable person who learns fast and enjoy learning, in many cases i am self-taught. The computer sciences make things easier and that is why like it. Part of this is also the competitive programming that allow me to learn more things and meet more people, most part of my student life at university was solving this kind of problems. 
+
+%As a student my experience is based on courses taken at my university, projects
+%developed in my charge in the ACM Chapter Cusco and things learned at nights while i was solving some exciting problem.\\
+%Thank you for taking the time to consider this application and I look forward to hearing from you in the near future.
+
+
+%\makeletterclosing
+
+%\end{comment}
+
+\end{document}
+
+
+%% end of file `template.tex'.
