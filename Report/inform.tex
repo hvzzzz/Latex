@@ -17,20 +17,20 @@
 \markboth{INFORME CIRCAE 2019-08-05-G1-P3-001}{} % Codigo del informe que corresponde a: semestre | mes | dia | numero de grupo con la G antepuesta | numero de proyecto con la P antepuesta | número de informe
 \maketitle
 \begin{abstract}
-El divisor de potencia de Wilkinson es un dispositivo pasivo con todos sus puertos emparejados,no tiene perdidas cuando el puerto de entrada se excita y los puertos de salida estan aislados,esta simulacion imlementara un divisor de potencia para el rango de frecuencia de 0 a 2GHz.
+El divisor de potencia de Wilkinson es un dispositivo pasivo con todos sus puertos emparejados, no tiene perdidas cuando el puerto de entrada se excita y los puertos de salida estan aislados, esta simulación implementará un divisor de potencia para el rango de frecuencias de 0 a 2GHz.
 \end{abstract}
 \begin{figure}[h]
     \centering
         \includegraphics[width=8cm]{imagenes/img2}
-        \caption{E-field phase animation of a Wilkinson power dividerpozar2012microwave.}
+        \caption{E-field phase animation of a Wilkinson power divider.}
         \label{fig:animation}
 \end{figure}
 \section{Problema}
 \label{sec:Problem}
-La division de una señal de entrada en señales de salida equiamplitud y equifase se logra con un divisor tipo T o un divisor resistivo,pero estos presentan la limitacion de tan solo poseer un numero par de salidas, por ejemplo en caso se necesitaran usar 9 salidas, un divisor de 16 salidas tendria que ser utlizado, esto produciria disipación de potencia innecesaria,el divisor de potencia de Wilkinson soluciona este problema \cite{wilkinson1960n}.
+La división de una señal de entrada en señales de salida equiamplitud y equifase se logra con un divisor tipo T o un divisor resistivo, pero estos presentan la limitacion de tan solo poseer un numero par de salidas, por ejemplo en caso se necesitaran usar 9 salidas, un divisor de 16 salidas tendria que ser utlizado, esto produciría disipación de potencia innecesaria, el divisor de potencia de Wilkinson soluciona este problema \cite{wilkinson1960n}.
 \section{Fundamento Teórico}
 \label{sec:fundamento}
-Los divisores de potencia son caracterizados por matrices de dispersión que nos diran cual sera el comportamiento de dicho divisor, esta matriz es cuadrada cuyo orden dependerá del numero de puertos utilizados en nuestro caso sera de orden 3, ademas de ello si se analizan sus propiedades podremos saber si esta pertenece a un acoplador, divisivor de potencia y las carateristicas de los puertos de estas\cite{pozar2012microwave}. El divisor de potencia de Wilkinson es un dispositivo en el que todos los puertos estan emparejados,auque sea un dispositivo de N puertos normalmente lo encontramos como un divisor de 2 vias(3 puertos),no tiene perdidas cuando se excita el puerto de entrada y los puertos de salida se mantienen aislados.
+Los divisores de potencia son caracterizados por matrices de dispersión que nos diran cual sera el comportamiento de dicho divisor, esta matriz es cuadrada cuyo orden dependerá del numero de puertos utilizados en nuestro caso sera de orden 3, ademas de ello si se analizan sus propiedades podremos saber si esta pertenece a un acoplador, divisivor de potencia y las carateristicas de los puertos de estas\cite{pozar2012microwave}. El divisor de potencia de Wilkinson es un dispositivo en el que todos los puertos estan emparejados, aunque sea un dispositivo de N puertos, normalmente lo encontramos como un divisor de 2 vias(3 puertos),no tiene perdidas cuando se excita el puerto de entrada y los puertos de salida se mantienen aislados.
 \vspace{5mm}
 \begin{equation}
 [S]=
@@ -64,7 +64,7 @@ Para analizar totalmente esta estructura realizaremos un análisis de modo par-i
         \caption{Analisis Par-Impar.}
         \label{fig:analisis-par-impar}
 \end{figure}
-Posteriormente como resultado de este análisis tendremos los siguientes parametros de dispersion. 
+Posteriormente como resultado de este análisis tendremos los siguientes parametros de dispersión. 
 \begin{equation}
 \begin{split}
     S_{11}&=0 \\
@@ -190,7 +190,20 @@ Podremos visualizar el campo eléctrico y el campo magnético en el divisor para
     \caption{Vista de Campo Magnético.}
     \label{fig:modelamiento10}
 \end{figure}
+\section{Conclusiones}
+Podemos concluir que en el caso de los puertos 2 y 3 del divisor sean excitados simultaneamente, la matriz de dispersión nos indica que la red es reciproca, esto quiere decir que este divisor puede ser usado tambien como combinador de potencia, las señales de entrada se combinarian dando una resultante en el puerto 1 \cite{wilkinson1960n}.
 
+\begin{figure}[h]    
+    \centering
+    \includegraphics[width=9cm,height=5cm]{imagenes/img18}
+    \caption{S Parameters.}
+    \label{fig:parametro_s}
+\end{figure}
+
+Podemos ver en las curvas de los parametros de dispersión las caracteristicas de la matriz dada en el fundamento teórico, los parametros $$S_{31},S_{21}$$ que al ser iguales nos dicen que una division igual de potencia fue alcanzada.
+Tambien se puede apreciar que os terminales de salida estan aislados esto se puede ver en la gráfica de los parametros $$S_{31},S_{21}$$ 
+
+En la realización de esta simulación, se ha podido observar el fenomeno de división de potencia de este divisor, se entendieron conceptos los conceptos de matriz de dispersión, análisis par-impar, asi como tambien, el uso a un nivel básico de la herramienta de simulación CST Studio Suite.
 %\vspace{10mm}
 \bibliographystyle{ieeetr}
 \bibliography{bibliografia}
