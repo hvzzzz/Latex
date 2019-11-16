@@ -19,6 +19,11 @@
 \begin{abstract}
 En este proyecto implementaremos el control de un brazo levitado por hélice, esto se logrará modificando la velocidad de giro de la hélice con el fin de que el brazo se encuentre en una posición deseada.
 \end{abstract}
+\section{Objetivos}
+El objetivo de este proyecto es controlar el nivel de un brazo, controlando la velocidad de la hélice para que mantenga el brazo nivelado. Se usa y mide el ángulo para que el brazo se mantenga nivelado controlando la velocidad. Utilizando ganancia proporcional (control de realimentación lineal, que multiplica la señal de error actuante con la ganancia) y retroalimentación delta (derivada), podemos hacer que el brazo se mueva cerca del nivel deseado.
+
+La nivelación del brazo dependerá de la retroalimentación que este reciba, si esta retroalimentación es demasiado alta el brazo comenzara a oscilar ante cualquier perturbación y la oscilación aumentara con el tiempo, pero esto se puede evitar si se añade una retroalimentación delta, ya que añadiendo esta se tiene un control completo del brazo moviéndolo hacia arriba o abajo dependiendo de lo que uno desee y debido a la retroalimentación delta, cuando el brazo reciba una perturbación; este automáticamente regresara a su posición de nivel deseado.
+
 \section{Modelamiento Matemático}
 \label{sec:modelamiento}
 El modelamiento de este sistema tendra dos partes, en la primera parte modelaremos el subsistema mecánico del brazo y en la segunda parte el subsistema motor-hélice \cite{gunel2016modeling}.
@@ -113,10 +118,89 @@ Reemplazando \ref{eq:consideraciones} en \ref{eq:transfer} la función de transf
 \begin{equation}
     \begin{split}
         \theta_{B}(s)[AS^3+BS^2+CS]&=DV_{s}(s)\\
-        A\ddot{\theta_{B}}+B\ddot{\theta_{B}}+C\dot{\theta_{B}}&=DV_{s}(s)\\
-        A\ddot{\theta_{B}}&=DV_{s}-B\ddot{\theta_{B}}-C\dot{\theta_{B}}\\
+        A\dddot{\theta}_{B}+B\ddot{\theta}_{B}+C\dot{\theta}_{B}&=DV_{s}(s)\\
+        A\dddot{\theta}_{B}&=DV_{s}-B\ddot{\theta}_{B}-C\dot{\theta}_{B}\\
+        \dddot{\theta}_{B}&=\frac{DV_{s}}{A}-\frac{B\ddot{\theta}_{B}}{A}-\frac{C\dot{\theta}_{B}}{A}\\
     \end{split}
-    \label{eq:consideraciones}
+    \label{eq:estados}
+\end{equation}
+Operando en \ref{eq:estados} tendremos que 
+\begin{equation}
+    \begin{split}
+        \frac{D}{A}&=\frac{J_{p}k_{t}}{J_{B}L(J_{p}+J_{1})}\\
+        \frac{B}{A}&=\frac{LB+R(J_{p}+J_{1})}{L(J_{p}+J_{1})}\\
+        \frac{C}{A}&=\frac{RB+k_{f}k_{t}}{L(J_{p}+J_{1})}\\
+    \end{split}
+    \label{eq:states}
+\end{equation}
+Tomando nuestros estados
+\begin{equation}
+    \begin{split}
+        X_{1}&=\dot{\theta}_{B}\\
+        X_{2}&=\ddot{\theta}_{B}\\
+        \dot{X_{2}}&=\dddot{\theta}_{B}\\
+        \dot{X_{1}}&=\ddot{\theta}_{B}\\
+        \dot{X_{1}}&=X_{2}\\
+    \end{split}
+    \label{eq:finalstates}
+\end{equation}
+La matriz de estados será
+\begin{equation}
+    \begin{pmatrix}
+        \ddot{\theta}_{B}\\
+        \dddot{\theta}_{B}\\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    0&1\\
+    -\frac{C}{A}&-\frac{B}{A}\\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \dot{\theta}_{B}\\
+        \ddot{\theta}_{B}\\
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        0\\
+        \frac{D}{A}\\
+    \end{pmatrix}
+    V_{b}
+    \label{eq:scattering}
+\end{equation}
+Reemplazando Valores en la matriz de estados
+\begin{equation}
+    \begin{pmatrix}
+        \dot{X_{1}}\\
+        \ddot{X_{2}}\\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    0&1\\
+    -\frac{RB+k_{f}k_{t}}{L(J_{p}+J_{1})}&-\frac{LB+R(J_{p}+J_{1})}{L(J_{p}+J_{1})}\\
+    \end{pmatrix}
+    \begin{pmatrix}
+        X_{1}\\
+        X_{2}\\
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        0\\
+        \frac{J_{p}k_{t}}{J_{B}L(J_{p}+J_{1})}\\
+    \end{pmatrix}
+    V_{b}
+    \label{eq:scattering}
+\end{equation}
+Simplificando
+\begin{equation}
+    Y=
+    \begin{pmatrix}
+        \frac{1}{S}&0\\
+    \end{pmatrix}
+    \begin{pmatrix}
+        X_{1}\\
+        X_{2}\\
+    \end{pmatrix}
+    \label{eq:scattering}
 \end{equation}
 %\vspace{10mm}
 \bibliographystyle{ieeetr}
