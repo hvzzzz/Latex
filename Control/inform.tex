@@ -22,7 +22,7 @@ En este proyecto implementaremos el control de un brazo levitado por hélice, es
 \section{Objetivos}
 El objetivo de este proyecto es controlar el nivel de un brazo, controlando la velocidad de la hélice para que mantenga el brazo nivelado. Se usa y mide el ángulo para que el brazo se mantenga nivelado controlando la velocidad. Utilizando ganancia proporcional (control de realimentación lineal, que multiplica la señal de error actuante con la ganancia) y retroalimentación delta (derivada), podemos hacer que el brazo se mueva cerca del nivel deseado.
 
-La nivelación del brazo dependerá de la retroalimentación que este reciba, si esta retroalimentación es demasiado alta el brazo comenzara a oscilar ante cualquier perturbación y la oscilación aumentara con el tiempo, pero esto se puede evitar si se añade una retroalimentación delta, ya que añadiendo esta se tiene un control completo del brazo moviéndolo hacia arriba o abajo dependiendo de lo que uno desee y debido a la retroalimentación delta, cuando el brazo reciba una perturbación; este automáticamente regresara a su posición de nivel deseado.
+La nivelación del brazo dependerá de la retroalimentación que este reciba, si esta retroalimentación es demasiado alta el brazo comenzara a oscilar ante cualquier perturbación y la oscilación aumentara con el tiempo, pero esto se puede evitar si se añade una retroalimentación delta, ya que añadiendo esta se tiene un control completo del brazo moviéndolo hacia arriba o abajo dependiendo de lo que uno desee y debido a la retroalimentación delta, cuando el brazo reciba una perturbación; este automáticamente regresara a su posición de nivel deseado \cite{edxpage}.
 
 \section{Modelamiento Matemático}
 \label{sec:modelamiento}
@@ -92,7 +92,7 @@ LLevando \ref{eq:motortork} al dominio de Laplace
     \end{split}
     \label{eq:motorenplace}
 \end{equation}
-Reemplazando \ref{eq:torkbrazoplace} en \ref{eq:motorenplace} tendremos la función de transferencia$$F(s)$$.
+Reemplazando \ref{eq:torkbrazoplace} en \ref{eq:motorenplace} tendremos la función de transferencia.
 \begin{equation}
     \begin{split}
         \frac{k_{t}J_{p}}{(k_{f}+k_{t})LS^3J_{B}+J_{B}S^2(LB+R(J_{1}+J_{p}))+S(RB+k_{f}k_{t})}\\
@@ -202,7 +202,22 @@ Simplificando
     \end{pmatrix}
     \label{eq:scattering}
 \end{equation}
-%\vspace{10mm}
+El diagrama de estados quedará de la siguiente manera. 
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=8cm]{images/estados.eps}
+        \caption{Diagrama de Estados.}
+        \label{fig:states}
+\end{figure}
+
+Pasando a diagrama de bloques
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=8cm]{images/bloques.eps}
+        \caption{Diagrama de Bloques.}
+        \label{fig:bloques}
+\end{figure}
+\vspace{100mm}
 \bibliographystyle{ieeetr}
 \bibliography{bibliografia}
 \end{document}
