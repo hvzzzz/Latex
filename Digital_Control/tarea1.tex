@@ -202,6 +202,7 @@ Demostración
     \end{split}
     \label{eq:despla_time1}
 \end{equation}
+
 Haciendo cambio de variable $m=n-n_{0}$ en \ref{eq:despla_time1} se tendrá
 \begin{equation}
     \begin{split}
@@ -210,6 +211,29 @@ Haciendo cambio de variable $m=n-n_{0}$ en \ref{eq:despla_time1} se tendrá
     \end{split}
     \label{eq:despla_time2}
 \end{equation}
+
+\textbf{Multiplicación por una Secuencia Exponencial}
+\vspace{5mm}
+
+%\setlength{\parindent}{10ex}
+Esta propiedad establece que\par
+
+\begin{equation}
+    \begin{split}
+        z^n_{0}x[n]\xrightarrow{\mathscr{Z}}X(z/z_{0})\\
+    \end{split}
+    \label{eq:multi}
+\end{equation}
+
+Demostración
+\begin{equation}
+    \begin{split}
+        X(Z)&=\displaystyle\sum_{n=-\infty}^{\infty}\,(z^n_{0}x[n])z^{-n}\\
+        X(Z)&=\displaystyle\sum_{n=-\infty}^{\infty}\,x[n](\frac{z}{z_{0}})^{-n}\\
+    \end{split}
+    \label{eq:multipli1}
+\end{equation}
+De \ref{eq:multipli1} podemos ver que se cumple \ref{eq:multi}
 
 \textbf{Propiedad de Convolución}
 \vspace{5mm}
@@ -283,7 +307,7 @@ La transformada bilateral necesita ser definida para el rango completo de $-\inf
     \end{split}
     \label{eq:zt_unilateral}
 \end{equation}
-La notación antes usada para la transformada Z cambiara a $\mathscr{Z}^+\{x[n]\}$, esta transformada difiere de la transformada bilateral en el limite inferior de la sumatoria, el cual es siempre cero.
+La notación antes usada para la transformada Z cambiara a $\mathscr{Z}^+\{x[n]\}$, esta transformada difiere de la transformada bilateral en el límite inferior de la sumatoria, el cual es siempre cero.
 
 Casi todas las propiedades estudidadas para la transformada bilateral se cumplen tambien para la transformada unilateral, a excepción de la propiedad de desplazamiento en el tiempo.
 
@@ -395,6 +419,165 @@ Usando la definición de la transformada Z unilateral y operando se tendrá.
     \label{eq:ejer2}
 \end{equation}
 
+Expandiendo la sumatoria tendremos que  
+\begin{equation}
+    \begin{split}
+        \displaystyle\sum_{n=0}^{\infty}\,nz^{-n}&=z^{-1}+2z^{-2}+3z^{-3}+...+nz^{-n}\\
+    \end{split}
+    \label{eq:ejer21}
+\end{equation}
+
+Multiplicando \ref{eq:ejer21} por $-2z^{-1}$
+\begin{equation}
+    \begin{split}
+        -2z^{-1}\displaystyle\sum_{n=0}^{\infty}\,nz^{-n}&=z^{-1}+2z^{-2}+3z^{-3}+...+nz^{-n}\\
+    \end{split}
+    \label{eq:ejer22}
+\end{equation}
+
+Sumando \ref{eq:ejer21} y \ref{eq:ejer22} se tendrá 
+\begin{equation}
+    \begin{split}
+        \displaystyle\sum_{n=0}^{\infty}\,nz^{-n}&=\frac{z^{-1}-2nz^{-(n+1)}+nz^{-(n+2)}}{(1-z^{-1})^2}\\
+    \end{split}
+    \label{eq:ejer23}
+\end{equation}
+
+Llevando el límite cuando n tiende a $\infty$ en \ref{eq:ejer23} se tendrá finalmente.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,nz^{-n}=\frac{z^{-1}}{(1-z^{-1})^2}\\
+    \end{split}
+    \label{eq:ejer24}
+\end{equation}
+
+\textbf{Función Polinomial}
+\vspace{5mm} 
+
+Sea $x[n]=a^n$
+
+\vspace{5mm}
+Usando la definición de la transformada Z unilateral y operando se tendrá.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,a^nz^{-n}\\
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,(az^{-1})^{n}\\
+    \end{split}
+    \label{eq:ejer3}
+\end{equation}
+
+Tendremos que \ref{eq:ejer3} tiene la misma forma que \ref{eq:ejer11}, por lo que podemos dar una respuesta directamente.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,a^nz^{-n}=\frac{1}{1-az^{-1}}\\
+    \end{split}
+    \label{eq:ejer31}
+\end{equation}
+
+\textbf{Función Exponencial}
+\vspace{5mm} 
+
+Sea $x[n]=e^{-an}$
+
+\vspace{5mm}
+Usando la definición de la transformada Z unilateral y operando se tendrá.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,e^{-an}z^{-n}\\
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,(e^{-a}z^{-1})^{n}\\
+    \end{split}
+    \label{eq:ejer4}
+\end{equation}
+
+Tendremos que \ref{eq:ejer4} tiene la misma forma que \ref{eq:ejer11}, por lo que podemos dar una respuesta directamente.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,e^{-an}z^{-n}=\frac{1}{1-e^{-a}z^{-1}}\\
+    \end{split}
+    \label{eq:ejer41}
+\end{equation}
+
+\textbf{Función Senoidal}
+\vspace{5mm} 
+
+La identidad de Euler establece que $sen(\omega n)=\frac{e^{i\omega n}-e^{-i\omega n}}{2i}$
+
+\vspace{5mm}
+Usando la definición de la transformada Z unilateral y usando la propiedad de linealidad se tendrá.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,(\frac{e^{iwn}-e^{-iwn}}{2i})z^{-n}\\
+        X^+(z)&=\frac{1}{2i}\displaystyle\sum_{n=0}^{\infty}\,e^{iwn}z^{-n}-\frac{1}{2i}\displaystyle\sum_{n=0}^{\infty}\,e^{-iwn}z^{-n}\\
+        X^+(z)&=\frac{1}{2i}(\displaystyle\sum_{n=0}^{\infty}\,e^{iwn}z^{-n}-\displaystyle\sum_{n=0}^{\infty}\,e^{-iwn}z^{-n})\\
+    \end{split}
+    \label{eq:ejer5}
+\end{equation}
+
+Tendremos que \ref{eq:ejer5} tiene la misma forma que \ref{eq:ejer11}, por lo que, operando se tendrá.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\frac{1}{2i}(\frac{1}{1-z^{-1}e^{i\omega}}-\frac{1}{1-z^{-1}e^{-i\omega}})\\
+        X^+(z)&=\frac{z^{-1}sen(\omega)}{1+z^{-2}-2z^{-1}cos(\omega)}\\
+    \end{split}
+    \label{eq:ejer51}
+\end{equation}
+
+Para función coseno se tendrá que 
+a identidad de Euler establece que $cos(\omega n)=\frac{e^{i\omega n}+e^{-i\omega n}}{2}$
+
+\vspace{5mm}
+Usando la definición de la transformada Z unilateral y la propiedad de linealidad se tendrá.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\displaystyle\sum_{n=0}^{\infty}\,(\frac{e^{i\omega n}+e^{-i\omega n}}{2})z^{-n}\\
+        X^+(z)&=\frac{1}{2}\displaystyle\sum_{n=0}^{\infty}\,e^{iwn}z^{-n}+\frac{1}{2}\displaystyle\sum_{n=0}^{\infty}\,e^{-iwn}z^{-n}\\
+        X^+(z)&=\frac{1}{2}(\displaystyle\sum_{n=0}^{\infty}\,e^{iwn}z^{-n}+\displaystyle\sum_{n=0}^{\infty}\,e^{-iwn}z^{-n})\\
+    \end{split}
+    \label{eq:ejer6}
+\end{equation}
+
+Tendremos que \ref{eq:ejer6} tiene la misma forma que \ref{eq:ejer11}, por lo que, operando se tendrá.
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\frac{1}{2}(\frac{1}{1-z^{-1}e^{i\omega}}+\frac{1}{1-z^{-1}e^{-i\omega}})\\
+        X^+(z)&=\frac{1-z^{-1}cos(\omega)}{1+z^{-2}-2z^{-1}cos(\omega)}\\
+    \end{split}
+    \label{eq:ejer61}
+\end{equation}
+
+\subsection{Ejemplos}
+
+\begin{itemize}
+    \item \textbf{$e^{-at}sen(\omega t)$}
+    \vspace{5mm}
+
+Sea su representación en tiempo discreto $x[n]=e^{-aTn}sen(\omega Tn)$, usaremos la propiedad de multiplicación por una secuencia exponencial para su resolución.
+
+De \ref{eq:ejer51} sabemos que 
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\frac{z^{-1}sen(\omega T)}{1+z^{-2}-2z^{-1}cos(\omega T)}\\
+        X^+(\frac{z}{e^{-aT}})&=\frac{(\frac{z}{e^{-aT}})^{-1}sen(\omega T)}{1+(\frac{z}{e^{-aT}})^{-2}-2(\frac{z}{e^{-aT}})^{-1}cos(\omega T)}\\
+        X^+(\frac{z}{e^{-aT}})&=\frac{e^{-aT}z^{-1}sen(\omega T)}{1+e^{-2aT}z^{-2}-2z^{-1}e^{-aT}cos(\omega T)}\\
+    \end{split}
+    \label{eq:ejer62}
+\end{equation}
+
+\item \textbf{$e^{-at}cos(\omega t)$}
+    \vspace{5mm}
+
+Sea su representación en tiempo discreto $x[n]=e^{-aTn}cos(\omega Tn)$, usaremos la propiedad de multiplicación por una secuencia exponencial para su resolución.
+
+De \ref{eq:ejer61} sabemos que 
+\begin{equation}
+    \begin{split}
+        X^+(z)&=\frac{1-z^{-1}cos(\omega T)}{1+z^{-2}-2z^{-1}cos(\omega T)}\\
+        X^+(\frac{z}{e^{-aT}})&=\frac{1-(\frac{z}{e^{-aT}})^{-1}cos(\omega T)}{1+(\frac{z}{e^{-aT}})^{-2}-2(\frac{z}{e^{-aT}})^{-1}cos(\omega T)}\\
+        X^+(\frac{z}{e^{-aT}})&=\frac{1-e^{-aT}z^{-1}cos(\omega T)}{1+e^{-2aT}z^{-2}-2e^{-aT}z^{-1}cos(\omega T)}\\
+    \end{split}
+    \label{eq:ejer72}
+\end{equation}
+\end{itemize}
 %$$\mathscr{L}\{f(t)\}=F(s)$$
 %$$\mathscr{Z}\{f(t)\}=F(s)$$
 %\begin{figure}[h]
