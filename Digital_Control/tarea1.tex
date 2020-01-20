@@ -59,7 +59,7 @@
 \fancyhf{}
 %\fancyhead[LE,RO]{}
 \fancyhead[RE,LO]{Control Digital y Aplicaciones}
-\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[CE,CO]{\rightmark}
 \fancyfoot[LE,RO]{\thepage}
 \renewcommand{\headrulewidth}{2pt}
 \renewcommand{\footrulewidth}{1pt}
@@ -577,6 +577,253 @@ De \ref{eq:ejer61} sabemos que
     \end{split}
     \label{eq:ejer72}
 \end{equation}
+
+\item \textbf{$x[n]=\frac{-1}{n}(\frac{1}{2})^n$}
+    \vspace{5mm}
+
+    Usaremos la propiedad de la diferenciación para resolver este problema, para ello procederemos como sigue.
+    \begin{equation}
+        \begin{split}
+            nx[n]&=-(\frac{1}{2})^n\\
+            \mathscr{Z}\{nx[n]\}&=-z\frac{dX(z)}{dz}\\
+            -z\frac{dX(z)}{dz}&=\frac{-1}{1-\frac{1}{2}z^{-1}}\\
+            \frac{dX(z)}{dz}&=\frac{-2}{1-2z}\\
+            X(z)&=log(1-2z)\\
+        \end{split}
+        \label{eq:ejer8}
+    \end{equation}
+    
+\item \textbf{$x[n]=2(\frac{1}{2})^n-(\frac{1}{4})^n$}
+    \vspace{5mm}
+
+    Por la naturaleza de la secuencia tendremos
+    \begin{equation}
+        \begin{split}
+            X(z)&=\frac{-1}{1-\frac{1}{4}z^{-1}}+\frac{2}{1-\frac{1}{2}z^{-1}}\\
+            X(z)&=\frac{1}{(1-\frac{1}{4}z^{-1})(1-\frac{1}{2}z^{-1})}\\
+        \end{split}
+        \label{eq:ejer9}
+    \end{equation}
+
+
+\item \textbf{Sean las secuencias $x_{1}[n]=\delta[n]+2\delta[n-1]+\delta[n-2],x_{2}[n]=\delta[n]-\delta[n-1]$ calcular $\mathscr{Z}(x_{1}[n]*x_{2}[n])$}
+    \vspace{5mm}
+
+    Usaremos la propiedad de la convolución para resolver este problema
+    \begin{equation}
+        \begin{split}
+            X_{1}(z)&=1+2z^{-1}+z^{-2}\\
+            X_{2}(z)&=1-z^{-1}\\
+            X(z)&=X_{1}(z)X_{2}(z)\\
+            X(z)&=1+z^{-1}-z^{-2}-z^{-3}\\
+        \end{split}
+        \label{eq:ejerlast}
+    \end{equation}
+\end{itemize}
+\section{Función de Transferencia}
+La función de transferencia de un sistema lineal se define como el cociente de la transformada de Laplace de la variable de salida y la transformada de Laplace de la variable de entrada, todo esto con condiciones iniciales igual a cero.
+Esta relación describe la dinámica del sistema a considerar; una función de transferencia debe ser definida solo para sistemas lineales, estacionarios. Un sistema no estacionario(variante en el tiempo) tiene más de una variable que varia en el tiempo y la transformada de Laplace no debe ser usada. Una función de transferencia da una descripción de la entrada y salida del sistema, pero no incluye ninguna información con respecto a la estructura interna del sistema ni su comportamiento.\cite{dorf2005sistemas}
+
+\vspace{5mm}
+El proceso parte de las ecuaciones diferenciales que modelan el sistema, se usa la transformada de Laplace y se calcula el cociente $\frac{salida}{entrada}$ en funcion de la variable de Laplace $S$
+
+\subsection{Ejemplos}
+
+\section{Representación en Variables de Estado}
+El estado de un sistema en un instante dado, es el valor de unas variables internas del sistema(en ocaciones ficticias y no accesibles) que describen la evolución del mismo a lo largo del tiempo.
+
+\textbf{Estado:}
+\vspace{5mm}
+El estado de un sistema dinámico en cualquier instante de tiempo $t_{0}$ es el conjunto más pequeño de números suficiente para determinar el comportamiento o disposición del sistema para todo tiempo $t\geq t_{0}$.
+
+\vspace{5mm}
+\textbf{Variable de Estado:}
+\vspace{5mm}
+
+Se llama al conjunto linealmente independiente de variables que se utilizan para especificar el estado de un sistema.
+
+Se dice que un conjunto de $n$ variables $x_{1},x_{2},x_{3},...,x_{n}$ es linealmente independiente si no existe un conjunto de constantes $c_{1},c_{2},c_{3},...,c_{n}$ que sean todas cero, que satisfagan lo siguiente
+
+\begin{equation}
+    \begin{split}
+        c_{1}x_{1}+c_{2}x_{2}+c_{3}x_{3}+...+c_{n}x_{n}=0
+    \end{split}
+    \label{eq:lin_indepen}
+\end{equation}
+
+\textbf{Ecuación de Estado:}
+\vspace{5mm}
+
+Las variables de estado deben formularse de tal modo que si uno de conoce sus cariables en un instante dado, junto con los valores de las variables de entrada para este momento y para todo momento futuro, entonces la disposición del sistema y estas variables se determinan completamente para ese momento y para cualquier momento futuro.
+\begin{equation}
+    \begin{split}
+        \frac{dx_{1}}{dt}&=f_{1}(x_{1},x_{2},...,x_{n},u_{1},u_{2},...,u_{n}) \quad x_{1}(t_{0})={x_{1}}_{t-0}\\
+        \frac{dx_{2}}{dt}&=f_{2}(x_{1},x_{2},...,x_{n},u_{1},u_{2},...,u_{n}) \quad x_{2}(t_{0})={x_{2}}_{t-0}\\
+        _:^:\\
+        \frac{dx_{n}}{dt}&=f_{n}(x_{1},x_{2},...,x_{n},u_{1},u_{2},...,u_{n}) \quad x_{n}(t_{0})={x_{n}}_{t-0}\\
+    \end{split}
+    \label{eq:state_eq}
+\end{equation}
+Donde $t_{0}=$tiempo inicial
+\vspace{5mm}
+
+El espacio de estados es un espacio matemático de $n$ dimensiones cuyas coordenadas son las variables de estado. Por lo tanto en cualquier instante, el estado del sistema esta representado por un punto en el espacio de estados.
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=5cm]{IMAGENES/estados}
+        \caption{Espacio de Estados.}
+\end{figure}
+\subsection{Ejemplos}
+\section{Criterio de Controlabilidad y Observabilidad}
+\textbf{Criterio de Controlabilidad:}
+\vspace{5mm}
+
+Un sistema es completamente controlable si todas las variables de estado del proceso pueden ser controladas para alcanzar un determinado objetivo en un tiempo finito por un control sin restricciones $u(t)$, si alguna de las variables de estado no depende de $u(t)$ entonces se dice que esta variable es incontrolable, y en el caso esto suceda, se dice que el sistema no es completamente controlable. La controlabilidad puede ser definida tambien para las salidas del sistema, asi que se debe diferenciar entre controlabilidad de estados y controlabilidad del sistema.
+
+Se dice que el estado $x(t)$ es controlable en $t=t_{0}$ si existe una entrada $u(t)$ que llevará el estado a cualquier estado final $x(t_{1})$ por un tiempo finito.
+
+\vspace{5mm}
+\textbf{Criterio de Observabilidad:}
+\vspace{5mm}
+Dado un sistema LTI descrito por ecuaciones dinámicas, un estado $x(t)$ es observable si para una entrada $u(t)$, existe un tiempo finito $t_{f}\geq t_{0}$ , tal que, conociendo $u(t)$ para $t_{0}\leq t<t_{f}$ y las matrices A,B,C y D y la salida $y(t)$ para en intervalo $t_{0}\leq t<t_{f}$ sean suficientes para determinar $x(t_{0})$. Si todos los estados de un sistema son observables para un tiempo finito $t_{f}$ se puede decir que el sistema es completamente observable.
+\subsection{Ejemplos}
+
+
+\section{Solución de Sistema de Ecuaciones Mediante la Función de Transferencia}
+Usaremos la transformada inversa de Laplace para solucionar el sistema de ecuaciones mediante la función de transferencia.
+\subsection{Ejemplos}
+\section{Solución de las Ecuaciones de Estado}
+Resolveremos las ecuaciones diferenciales de las variables de estado en el dominio del tiempo.
+\subsection{Ejemplos}
+\section{Lugar Geométrico de las Raices}
+Es un metodo gráfico para examinar el comportamiento de las raices de un sistema frente a la variación de algun parametro en lazo cerrado. Nos permite a determinar la estabilidad del sistema . 
+\subsection{Ejemplos}
+
+\section{Metodos para la Asignación de Polos para el Diseño de Controladores}
+La fórmula de Ackermann es un metodo de diseño para resolver este problema de asignación de polos para sistemas LTI, con este metodo se puede hacer el diseño en un solo paso para sistemas representados en espacio de estados.
+Consiste en calcular una nueva ganancia en lazo cerrado $K$, esta se calculará usando la siguiente fórmula.
+\begin{equation}
+    \begin{split}
+        K=
+        \begin{bmatrix}
+            0 & 0 & ... & 1\\
+        \end{bmatrix}
+        M^{-1}_{c}p_{c}(A)
+    \end{split}
+    \label{eq:ackermann}
+\end{equation}
+Donde 
+\begin{itemize}
+    \item $M^{-1}_{c}$ es la inversa de la matriz de controlabilidad
+    \item $p_{c}$ es el polinomio que contiene los polos en lazo cerrado que se desean incluir en el sistema.
+    \begin{equation}
+        \begin{split}
+            p_{c}=S^{n}+a_{n-1}S^{n-1}+a_{n-2}S^{n-2}+...+a_{1}S+a_{0}
+        \end{split}
+        \label{eq:polo_closed_loop}
+    \end{equation}    
+\end{itemize}
+
+\subsection{Ejemplos}
+\begin{itemize}
+    \item Dadas las siguientes matrices de un sistema en espacio de estados $A,B,C$ calcular la ganancia en lazo cerrado $K$ para posicionar los polos en lazo cerrado en $-1$ y $-2$
+    \begin{equation}
+        \begin{split}
+            A=
+            \begin{bmatrix}
+                -1 & -2 \\
+                1 & -0.4
+            \end{bmatrix}
+            B=
+            \begin{bmatrix}
+                1 \\
+                -2
+            \end{bmatrix}
+            C=
+            \begin{bmatrix}
+                3 & 4 \\
+            \end{bmatrix}
+        \end{split}
+        \label{eq:ackermann_ejem1}
+    \end{equation}
+
+    Solución
+
+    Se desea posicionar los polos en $-1$ y $-2$ entonces se tendrá 
+    \begin{equation}
+        \begin{split}
+            p_{c}&=(S+1)(S+2)\\
+            p_{c}&=S^{2}+3S+2\\
+            p_{c}(A)&=
+            \begin{bmatrix}
+                -1 & -2 \\
+                1 & -0.4
+            \end{bmatrix}^2
+            +3\begin{bmatrix}
+                -1 & -2 \\
+                1 & -0.4
+            \end{bmatrix}
+            +2\begin{bmatrix}
+                1 & 0 \\
+                0 & 1
+            \end{bmatrix}\\
+            p_{c}(A)&=
+            \begin{bmatrix}
+                -1 & -1 \\
+                -1.4 & -1.84
+            \end{bmatrix}
+            +3\begin{bmatrix}
+                -1 & -2 \\
+                1 & -0.4
+            \end{bmatrix}
+            +2\begin{bmatrix}
+                1 & 0 \\
+                0 & 1
+            \end{bmatrix}\\
+            p_{c}(A)&=
+            \begin{bmatrix}
+                -2 & -3.2 \\
+                1.6 & -1.04
+            \end{bmatrix}
+        \end{split}
+        \label{eq:polo_ejem1}
+    \end{equation}
+    La inversa de la matriz de controlabilidad será
+    \begin{equation}
+        \begin{split}
+            M_{c}=
+            \begin{bmatrix}
+                B & AB \\
+            \end{bmatrix}\\
+            M_{c}=
+            \begin{bmatrix}
+                1 & 3 \\
+                -2 & 1.8
+            \end{bmatrix}\\
+            M^{-1}_{c}=\frac{1}{7.8}
+            \begin{bmatrix}
+                1.8 & -3 \\
+                2 & 1
+            \end{bmatrix}\\
+        \end{split}
+        \label{eq:ackermann1_ejem1}
+    \end{equation}
+    Reemplazando \ref{eq:ackermann1_ejem1} y \ref{eq:polo_ejem1} en la fórmula de Ackermann y operando, se tendrá finalmente.
+    \begin{equation}
+        \begin{split}
+            K=
+            \begin{bmatrix}
+                0 & 1 \\
+            \end{bmatrix}
+            M^{-1}_{c}p_{c}(A)
+            =
+            \begin{bmatrix}
+                -0.31 & -0.95 \\
+            \end{bmatrix}
+        \end{split}
+        \label{eq:ackermann_ejem1_result}
+    \end{equation}
+
 \end{itemize}
 %$$\mathscr{L}\{f(t)\}=F(s)$$
 %$$\mathscr{Z}\{f(t)\}=F(s)$$
