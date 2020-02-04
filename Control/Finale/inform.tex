@@ -182,6 +182,99 @@ Haciendo $\partial v_{pwm}=\partial \mu$ en \ref{eq:linealizada1}; Reemplazando 
     \end{split}
     \label{eq:linealfin1}
 \end{equation}
+\section{Sensibilidad del sistema}
+$Im+Re$Se calculará la sensibilidad a variaciones de la masa, en $C$ se hará $C=mc'$, donde $c'=\frac{g}{J_{a}}sen(\theta_{mo})$.
+Para Lazo Abierto
+\begin{equation}
+    \begin{split}
+        S_m^T&=\frac{\frac{dT}{T}}{\frac{dm}{m}}\\
+        T&=\frac{BD}{(s+A)(s^2-mc')}\\
+        \frac{dT}{T}&=\frac{sc'm}{(s+A)(s^2-mc')}\frac{dm}{m}\\
+        S_m^T&=\frac{sc'm}{(s+A)(s^2-mc')}\\
+        S_m^T&=\frac{sC}{(s+A)(s^2-C)}\\
+    \end{split}
+    \label{eq:m_sensi}
+\end{equation}
+
+Para Lazo Cerrado
+\begin{equation}
+    \begin{split}
+        S_m^T&=\frac{\frac{dT}{T}}{\frac{dm}{m}}\\
+        T&=\frac{BD}{BD+(s+A)(s^2-mc')}\\
+        \frac{dT}{T}&=\frac{sc'm}{BD+(s-A)(s^2-mc')}\frac{dm}{m}\\
+        S_m^T&=\frac{sc'm}{BD+(s+A)(s^2-mc')}\\
+        S_m^T&=\frac{sC}{BD+(s+A)(s^2-C)}\\
+    \end{split}
+    \label{eq:m_sensiclose}
+\end{equation}
+
+\section{diagrama de polos y ceros}
+Del denominador de la función de transferencia se tienen 3 polos, en $A$, $\sqrt{C}$ y $\sqrt{-C}$
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=8cm]{images/polos_ceros.eps}
+        \caption{Diagrama de Polos y Ceros.}
+\end{figure}
+
+El sistema es inestable.
+\section{error de estado estacionario}
+El sistema es inestable, por eso no se podrá calcular el error de estado estacionario para este sistema.
+\section{Análisis de estabilidad}
+El denominador se expandirá de la siguiente manera
+\begin{equation}
+    \begin{split}
+        T&=\frac{BD}{s^3+s^2A+s(-C)-AC+BD}\\
+    \end{split}
+    \label{eq:m_sensiclose}
+\end{equation}
+\subsection{Criterio de Routh}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=3cm]{images/routh.eps}
+        \caption{Arreglo de Routh.}
+\end{figure}
+
+\begin{equation}
+    \begin{split}
+        b1&=\frac{-AC+AC-DB}{A}=\frac{-DB}{A}\\
+    \end{split}
+    \label{eq:routh1}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        c1&=-AC+DB\\
+    \end{split}
+    \label{eq:routh1}
+\end{equation}
+
+Vemos que existe un cambio de variable, el sistema es inestable.
+
+\subsection{Criterio de Hurwitz}
+
+\begin{equation}
+    \begin{split}
+        \Delta_1&=a_2=A>0\\
+        \Delta_2&=det(
+        \begin{matrix}
+            a_2 & a_0 \\
+            a_3 & a_1 \\
+        \end{matrix})=
+        -AC+AC+BD=DB>0\\
+        \Delta_3&=det(
+        \begin{matrix}
+            a_2 & a_0 & 0 \\
+            a_3 & a_1 & 0 \\
+            0 & a_2 & a_0 \\
+        \end{matrix})=A(-C)-(-AC+BD)=-BD\\
+    \end{split}
+    \label{eq:hurwitz}
+\end{equation}
+
+No todos los determinates son positivos, el sistema es 
+inestable.
+
 \section{Lugar Geométrico de las Raices}
 Por simple inspección de los polos de la función de transferencia calculada en \ref{eq:linealfin1} podemos ver que el sistema es inestable ya que posee un polo en $s=\sqrt{C}$, grafiquemos el lugar geométrico de las raices para este sistema
 
@@ -320,7 +413,7 @@ La configuración de los bloques es la siguiente
         \label{fig:config1}
 \end{figure}
 
-\vspace{10mm}
+%\vspace{10mm}
 
 \begin{figure}[h]
     \centering
@@ -372,17 +465,17 @@ Se obtuvo la siguiente ecuación que representa al sistema + controlador
 Reemplazando los valores para las ganancias se tiene
 \begin{equation}
     \begin{split}
-        T&=\frac{14451.336(4.682\times 10^{-3}+s6.653\times 10^{-3}+s^2 3.415\times 10^{-3})}{(s+2.868)^4}\\
+        \frac{14451.336(4.682\times 10^{-3}+s6.653\times 10^{-3}+s^2 3.415\times 10^{-3})}{(s+2.868)^4}\\
     \end{split}
     \label{eq:PD_num_reeempla}
 \end{equation}
 
 Hagamos un analisis de bode para esta nueva función de transferencia
-
+\vspace{60mm}
 \begin{figure}[h]
     \centering
         \includegraphics[width=9cm]{images/14}
-        \caption{Analisis de Bode.}
+        \caption{Diagrama de Bode Sistema y Controlador.}
         \label{fig:bode}
 \end{figure}
 
@@ -390,11 +483,26 @@ Podemos observar que:
 
 \begin{itemize}
     \item El sistema en la magnitud, atenuara las entradas por encima de su frecuencia de corte al igual que un filtro pasabajos.
-    \item El sistema en la fase, atrasará la salida con respecto a la entreada a frecuencias por encima de su frecuencia de corte. 
+    \item El sistema en la fase, atrasará la salida con respecto a la entreada a frecuencias por encima de su frecuencia de corte.
+    \item El ancho de banda es de 7.2518  
+\end{itemize}
+
+El diagrama de bode del sistema sin controlador es el que sigue.
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=9cm,height=5cm]{images/15}
+        \caption{Diagrama de Bode Sistema sin Controlador.}
+\end{figure}
+
+\begin{itemize}
+    \item La ganancia en DC es infinita, por ello el ancho de banda es indeterminado.
+    \item A frecuencias bajas el sistema invertira la fase de la entrada y a frecuencias altas adelantará la salida en noventa grados con respecto a la entrada.
 \end{itemize}
 
 \section{Conclusiones y Observaciones}
 \begin{itemize}
+    \item Los criterios de Routh y Hurwitz se complementan confirmando que el sistema no es estable.
     \item Al observar el cambio en la respuesta en el tiempo se puede concluir la efectividad del sistema de control PID para nuestro sistema.
     \item Se pudo comprobar la predicción del metodo del lugar de las raices al elegir valores numéricos para las constantes.
     \item Se pudo observar nuestro sistema actua como un filtro pasabajos.
