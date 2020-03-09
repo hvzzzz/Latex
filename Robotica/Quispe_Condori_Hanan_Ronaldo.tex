@@ -260,11 +260,13 @@ Los objetivos esperados son los siguientes
     \end{enumerate}
     \item Usaremos MATLAB para obtener el modelo dinámico de la ecuación dada.
     
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=8cm]{IMAGENES/8.jpg}
-        \caption{Obtención del modelo dinámico.}
-    \end{figure}
+    \lstinputlisting[language=Python]{Matlab/diary}
+        
+    %\begin{figure}[h]
+    %    \centering
+    %    \includegraphics[width=8cm]{IMAGENES/8.jpg}
+    %    \caption{Obtención del modelo dinámico.}
+    %\end{figure}
     Primero se usara la función "tf" para obtener la función de transferencia del sistema despues usaremos la función "tf2ss" para obtener el modelo dinámico del sistema.
     \begin{enumerate}
         \item Se usaran las matrices A y B como se muestra a continuación.
@@ -282,6 +284,7 @@ Los objetivos esperados son los siguientes
         \end{figure}
         
         La función ode45 retorna la solución del sistema asi como el vector de tiempo.
+        \item 
     \end{enumerate}
     %\vspace{50mm}
 \end{enumerate}
