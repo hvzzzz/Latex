@@ -223,8 +223,7 @@ Los objetivos esperados son los siguientes
             \end{split}
             \label{eq:energia}
         \end{equation}
-        El error esta definido como la diferencia entre la posición deseada y la posición actual, bajo esta premisa de los datos obtenidos en el laboratorio se tendrá
-        \lstinputlisting[language=Matlab]{Matlab/extraccion.m}
+        El error esta definido como la diferencia entre la posición deseada y la posición actual, bajo esta premisa de los datos obtenidos en el laboratorio se tendrá 
         
 
         Graficando el error vs la velocidad se tendrá
@@ -260,7 +259,6 @@ Los objetivos esperados son los siguientes
     \end{enumerate}
     \item Usaremos MATLAB para obtener el modelo dinámico de la ecuación dada.
     
-    \lstinputlisting[language=Python]{Matlab/diary}
         
     %\begin{figure}[h]
     %    \centering
@@ -269,22 +267,10 @@ Los objetivos esperados son los siguientes
     %\end{figure}
     Primero se usara la función "tf" para obtener la función de transferencia del sistema despues usaremos la función "tf2ss" para obtener el modelo dinámico del sistema.
     \begin{enumerate}
-        \item Se usaran las matrices A y B como se muestra a continuación.
+        \item 
         
-        \lstinputlisting[language=Matlab]{Matlab/sso.m}
-        
-        La función principal es
-        \lstinputlisting[language=Matlab]{Matlab/simul_matrix.m}
 
-        El resultado obtenido es
-
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=13cm,height=8cm]{IMAGENES/9.jpg}
-            \caption{Simulación por ode45.}
-        \end{figure}
         
-        La función ode45 retorna la solución del sistema asi como el vector de tiempo.
         \item Para el método de Euler se tendrá
         \begin{equation}
             \begin{split}
@@ -303,20 +289,79 @@ Los objetivos esperados son los siguientes
         \end{equation}
         Usando la ecuación \ref{eq:euler_diff} se tendrá
 
-        \lstinputlisting[language=Matlab]{Matlab/eu_reporte.m}
+        
+        \item Para el metodo del filtrado se tendrán la siguientes estructuras de los filtros.
+        \begin{equation}
+            \begin{split}
+                \dot{y}(t_k)=\dot{F}_{y(t_{k})}(t_k)&=-\lambda F_{y(t_{k})}(t_{k})+\lambda y(t_{k})\\
+                \ddot{y}(t_k)=\dot{F}_{\dot{y}(t_{k})}(t_k)&=-\lambda F_{\dot{y}(t_{k})}(t_{k})+\lambda \dot{y}(t_{k})=-\lambda F_{\dot{y}(t_{k})}(t_{k})-\lambda^2 F_{y(t_{k})}(t_{k})+\lambda^2y(t_{k})\\
+                \dddot{y}(t_k)=\dot{F}_{\ddot{y}(t_{k})}(t_k)&=-\lambda F_{\ddot{y}(t_{k})}(t_{k})+\lambda \ddot{y}(t_{k})=-\lambda F_{\ddot{y}(t_{k})}(t_{k})-\lambda^2 F_{\dot{y}(t_{k})}(t_{k})-\lambda^3 F_{y(t_{k})}(t_{k})\\+ \lambda^3y(t_{k})
+            \end{split}
+            \label{eq:filters}
+        \end{equation}
+
+        Reemplazando la ecuación \ref{eq:filters} en la ecuación \ref{eq:ode} y despejando $y({t_k})$ se tendrá. 
+
+        \begin{equation}
+            \begin{split}
+                y(t_{k})=\frac{9\lambda F_{\ddot{y}(t_{k})}+(9\lambda^2+8\lambda)F_{\dot{y}(t_{k})}+(9\lambda^3+8\lambda^2+0.23\lambda-\pi)F_{y(t_{k})}+3F_{u(t_{k})}}{9\lambda^3+8\lambda^2+0.23\lambda}\\
+            \end{split}
+            \label{eq:simu_filt}
+        \end{equation}
+        Usando las ecuaciones \ref{eq:filters} y \ref{eq:simu_filt} en MATLAB se tendrá.
+        
+        
+        \item Sean los resultados de los diferentes métodos
+        %\vspace{50mm}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=15cm,height=4.8cm]{IMAGENES/12.jpg}
+            \caption{Comparación de Resultados ode45, Euler y Filtrado.}
+        \end{figure}
+    \end{enumerate}
+\end{enumerate}
+\section{Resultados}
+
+El resultado obtenido es
+%\vspace{20mm}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=13cm,height=8cm]{IMAGENES/9.jpg}
+            \caption{Simulación por ode45.}
+        \end{figure}
+
+        La función ode45 retorna la solución del sistema asi como el vector de tiempo.
 
         \begin{figure}[h]
             \centering
             \includegraphics[width=15cm,height=4cm]{IMAGENES/10.jpg}
             \caption{Simulación por Metodo de Euler.}
         \end{figure}
-        \item 
-    \end{enumerate}
-    %\vspace{50mm}
-\end{enumerate}
-\section{Resultados}
+
+        La gráfica obtenida será
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=15cm,height=4cm]{IMAGENES/11.jpg}
+            \caption{Simulación por Metodo de Filtrado.}
+        \end{figure}
 \section{Conclusiones}
 \section{Anexos}
+\begin{itemize}
+    \item Extracción de muestras del archivo $.dat$
+    \lstinputlisting[language=Matlab]{Matlab/extraccion.m}
+    \item Extracción del modelo dinámico 
+    \lstinputlisting[language=Python]{Matlab/diary}
+    \item ODE45
+    Se usaran las matrices A y B como se muestra a continuación.
+    \lstinputlisting[language=Matlab]{Matlab/sso.m}
+    La función principal es
+    \lstinputlisting[language=Matlab]{Matlab/simul_matrix.m}
+    \item Euler
+    \lstinputlisting[language=Matlab]{Matlab/eu_reporte.m}
+    \item Filtrado
+    \lstinputlisting[language=Matlab]{Matlab/simu_filter.m}
+\end{itemize}
 \bibliographystyle{apacite}
 \bibliography{biblio}
 \end{document}
