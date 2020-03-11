@@ -277,13 +277,39 @@ Los objetivos esperados son los siguientes
         \lstinputlisting[language=Matlab]{Matlab/simul_matrix.m}
 
         El resultado obtenido es
+
         \begin{figure}[h]
             \centering
-            \includegraphics[width=15cm]{IMAGENES/9.jpg}
+            \includegraphics[width=13cm,height=8cm]{IMAGENES/9.jpg}
             \caption{Simulación por ode45.}
         \end{figure}
         
         La función ode45 retorna la solución del sistema asi como el vector de tiempo.
+        \item Para el método de Euler se tendrá
+        \begin{equation}
+            \begin{split}
+                \dot{y}(t)\backsimeq \dot{y}(t_{k})&=\frac{y(t_{k})-y(t_{k-1})}{h}\\
+                \ddot{y}(t_{k})&=\frac{y(t_{k})-2y(t_{k-1})+y(t_{k-2})}{h^2}\\
+                \dddot{y}(t_{k})&=\frac{y(t_{k})-3y(t_{k-1})+3y(t_{k-2})-y(t_{k-2})}{h^3}\\
+            \end{split}
+            \label{eq:euler_equival}
+        \end{equation}
+        Reemplazando \ref{eq:euler_equival} en la ecuación diferencial dada y tomando $h= 0.001$ se tendrá.
+        \begin{equation}
+            \begin{split}
+                y(t_k)=\lbrack\frac{1}{\frac{9}{0.001^3}+\frac{8}{0.001^2}+\frac{0.23}{0.001}+\pi}\rbrack\lbrack 3\mu(t_k) +y(t_{k-1})(\frac{3*9}{0.001^3}+\frac{2*8}{0.001^2}+\frac{0.23}{0.001})\\-y(t_{k-2})(\frac{3*9}{0.001^3}+\frac{2*8}{0.001^2})+y(t_{k-3})\frac{9}{0.001^3}\rbrack
+            \end{split}
+            \label{eq:euler_diff}
+        \end{equation}
+        Usando la ecuación \ref{eq:euler_diff} se tendrá
+
+        \lstinputlisting[language=Matlab]{Matlab/eu_reporte.m}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=15cm,height=4cm]{IMAGENES/10.jpg}
+            \caption{Simulación por Metodo de Euler.}
+        \end{figure}
         \item 
     \end{enumerate}
     %\vspace{50mm}
