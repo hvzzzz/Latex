@@ -1,31 +1,19 @@
-sys=tf([3],[9,8,0.23,pi])
-
-sys =
+J =
  
-                3
-  ------------------------------
-  9 s^3 + 8 s^2 + 0.23 s + 3.142
+[ b2*cos(q1) - cos(q2)*sin(q1)*(d3 + l3), -cos(q1)*sin(q2)*(d3 + l3), cos(q1)*cos(q2)]
+[ b2*sin(q1) + cos(q1)*cos(q2)*(d3 + l3), -sin(q1)*sin(q2)*(d3 + l3), cos(q2)*sin(q1)]
+[                                      0,          cos(q2)*(d3 + l3),         sin(q2)]
  
-Continuous-time transfer function.
+  2        2        3     2        2        3     2        3        2     2        3        2     2        2                2
+d3  cos(q1)  cos(q2)  + l3  cos(q1)  cos(q2)  + d3  cos(q2)  sin(q1)  + l3  cos(q2)  sin(q1)  + d3  cos(q1)  cos(q2) sin(q2)
 
-[A,B,C]=tf2ss(n,d)
+       2        2                2     2                2        2     2                2        2                  2        3
+   + l3  cos(q1)  cos(q2) sin(q2)  + d3  cos(q2) sin(q1)  sin(q2)  + l3  cos(q2) sin(q1)  sin(q2)  + 2 d3 l3 cos(q1)  cos(q2)
 
-A =
+                    3        2                  2                2                          2        2
+   + 2 d3 l3 cos(q2)  sin(q1)  + 2 d3 l3 cos(q1)  cos(q2) sin(q2)  + 2 d3 l3 cos(q2) sin(q1)  sin(q2)
 
-   -0.8889   -0.0256   -0.3491
-    1.0000         0         0
-         0    1.0000         0
-
-
-B =
-
-     1
-     0
-     0
-
-
-C =
-
-         0         0    0.3333
+                 2
+cos(q2) (d3 + l3)
 
 diary off
