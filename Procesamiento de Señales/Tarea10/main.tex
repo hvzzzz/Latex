@@ -95,8 +95,25 @@ En la herramienta de $fdatool$, se ingresaron las caracteristicas deseadas del f
 Al exportar los resultados se obtuvo lo siguiente.
 \lstinputlisting[language=matlab]{IIR_filter.fcf}
 
-\lstinputlisting[language=matlab]{provs.m}
-%--------------------------------------------------------------
-%     You don't have to mess with anything below this line.
-% --------------------------------------------------------------
+Del resultado podemos extraer la matriz SOS para su conversión a función de transferencia, esto se realizara mediante la función $sos2tf$  como se muestra a continuación.
+
+\lstinputlisting[language=matlab]{uso_ss2tf.m}
+
+Como resultado se tienen los coeficientes de la función de transferencia del filtro.
+
+\lstinputlisting[language=matlab]{result_sos2tf}
+
+Una vez con estos valores se puede usar la función $freqz$ para obtener la respuesta en frecuencia del filtro diseñado.
+
+\lstinputlisting[language=matlab]{uso_freqz.m}
+
+Esta función da como resultado la siguiente gráfica de respuesta en frecuencia.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm, height=8cm]{imagenes/fdatool.jpg}
+    \caption{Interfaz Gráfica fdatool.}
+    \label{fig:fda}
+\end{figure}
+
 \end{document}
