@@ -3,6 +3,7 @@
 \usepackage{apacite}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amsfonts} 
 \usepackage{newtxtext,newtxmath}
 \usepackage{listings}
 \usepackage[usenames]{color}
@@ -16,18 +17,17 @@
 \lstset{
 		frame=Ltb,
 		framerule=1pt,
-		framextopmargin=3pt,
-		framexbottommargin=3pt,
-		framexleftmargin=0.4cm,
-		framesep=0pt,
-		rulesep=.4pt,
+		framextopmargin=5pt, %margen de arriba
+		framexbottommargin=5pt, %margen de abajo
+		framexleftmargin= -2pt, %separacion del margen izquierdo
+		framesep=2pt,
+		rulesep=0.2pt,
 		backgroundcolor=\color{gray97},
 		rulesepcolor=,
         tabsize=4,
-        rulecolor=\color{azul1},
-        basicstyle=\scriptsize\rmfamily,
+        rulecolor=\color[RGB]{106, 182, 217}, %AZUL
         upquote=true,
-        aboveskip={1.5\baselineskip},
+        aboveskip={1.5\baselineskip}, %despues de la linea de texto
         columns=fixed,
         showstringspaces=false,
         extendedchars=true,
@@ -36,13 +36,14 @@
         showtabs=false,
         showspaces=false,
         showstringspaces=false,
-        identifierstyle=\rmfamily,
-        keywordstyle=\color[rgb]{0,0,1},
-        commentstyle=\color[rgb]{0.133,0.545,0.133},
-        stringstyle=\color[rgb]{0.627,0.126,0.941},
-        keywordstyle=\bfseries,
+        basicstyle=\scriptsize\ttfamily\color[RGB]{39, 100, 46}, %Numeros de lineas, simbolos, puntos y coma y demas
+        identifierstyle=\ttfamily\color[RGB]{56, 140, 189}, %variables
+        commentstyle=\color[RGB]{62, 179, 101}, %comentarios
+        stringstyle=\color[RGB]{247, 165, 42}, %impresiones
+        keywordstyle=\bfseries\color[RGB]{237, 118, 150}, %funciones
+        %
 		numbers=left,
-		numbersep=15pt,
+		numbersep=-7pt, %separacion del numero
 		numberstyle=\tiny,
 		numberfirstline = false,
 		breaklines=true,
@@ -342,7 +343,7 @@ Esta es una herramienta usada ampliamente conocida en el area de la robótica y 
     La salida de este script es la siguiente
     \lstinputlisting[language=Matlab]{Matlab/diary}
     
-    De la linea $19$ del resultado tendremos que los puntos singulares estaran dados donde $cos(q_2)*)(d_3+l3)=0$ esto corresponde a los puntos donde $q_2=\pm(2n+1)\pi$ no existe condicion para $d_3$ ya que al ser una longitud esta nunca puede ser negativa, por lo tanto el segundo factor no puede ser $0$.
+    De la linea $19$ del resultado tendremos que los puntos singulares estaran dados donde $cos(q_2)*)(d_3+l3)=0$ esto corresponde a los puntos donde $q_2=\pm(2n+1)\pi$ donde $n\in \mathbb{N}$, no existe condicion para $d_3$ ya que al ser una longitud esta nunca puede ser negativa, por lo tanto el segundo factor no puede ser $0$.
     \item Se usaran las ecuaciones parametricas de la elipse en conjunto con la cinemática inversa del robot.
     \begin{equation}
         \begin{split}
@@ -351,7 +352,7 @@ Esta es una herramienta usada ampliamente conocida en el area de la robótica y 
         \end{split}
         \label{eq:para_elip}
     \end{equation}
-    En la ecuación \ref{eq:para_elip} el centro de la figura estará dado por el par ordenado $a,c$ y tendrá semiejes $b$ y $d$.  
+    En la ecuación \ref{eq:para_elip} el centro de la figura estará dado por el par ordenado $a,c$ y tendrá semiejes $b$ y $d$ siendo estos distintos $b\not =d$.  
 \end{enumerate}
 \section{Conclusiones}
 \begin{itemize}
