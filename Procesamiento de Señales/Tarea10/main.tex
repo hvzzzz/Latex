@@ -3,7 +3,7 @@
 % Head down to where it says "Start here"
 % --------------------------------------------------------------
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry} 
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=3cm,headsep=8pt,a4paper]{geometry}
 \usepackage{listings}
 \usepackage[usenames]{color}
 \definecolor{gray97}{gray}{.97}
@@ -47,7 +47,6 @@
 		numberfirstline = false,
 		breaklines=true,
 		}
-
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage[spanish]{babel} %Castellanización
 \usepackage[T1]{fontenc} %escribe lo del teclado
@@ -85,9 +84,17 @@ Procesamiento de Señales II}
 \maketitle
 \section{Diseñar un filtro IIR utilizando fdatool, filtro pasabajas Chevyshev 1 (rizado banda de paso), $fc=1200Hz,fr=2300Hz,Ap=2dB,Ar=50dB$.}
 
-Se uso una resistencia de valor de 1k$\Omega$ y un capacitor de $8nF$ se eligio este valor para que la frecuencia de corte este en los $20kHz$ este calculo se realizo de la siguiente manera.
-\\
-La función $freqz$ nos da la respuesta en frecuencia normalizada cuyo valor en el punto de $-3.006dB$ corresponde a un valor de frecuencia normalizada de 0.6085 esta corresponderá a la frecuencia de corte del filtro RC.
+En la herramienta de $fdatool$, se ingresaron las caracteristicas deseadas del filtro como se indica en la siguiente figura.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm, height=8cm]{imagenes/fdatool.jpg}
+    \caption{Interfaz Gráfica fdatool.}
+    \label{fig:fda}
+\end{figure}
+
+Al exportar los resultados se obtuvo lo siguiente.
+\lstinputlisting[language=matlab]{IIR_filter.fcf}
+
 \lstinputlisting[language=matlab]{provs.m}
 %--------------------------------------------------------------
 %     You don't have to mess with anything below this line.
