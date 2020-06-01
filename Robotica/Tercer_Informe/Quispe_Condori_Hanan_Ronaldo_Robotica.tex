@@ -184,7 +184,7 @@ Considere el siguiente algoritmo de control:
     \begin{split}
         \tau&=K_p
         \begin{bmatrix}
-            \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
         \end{bmatrix}
         -K_vatan(\dot{q})+g(q)
     \end{split}
@@ -194,13 +194,13 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
 \begin{equation}
     \begin{split}
         \begin{bmatrix}
-            \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
         \end{bmatrix}&=
         \begin{bmatrix}
-            \frac{1}{cosh^2(\tilde{q_1})}&\frac{tanh(\tilde{q_1})}{1+tanh^2(\tilde{q_1})}\\
-            \frac{1}{cosh^2(\tilde{q_2})}&\frac{tanh(\tilde{q_2})}{1+tanh^2(\tilde{q_2})}\\
-            \vdots&\vdots\\
-            \frac{1}{cosh^2(\tilde{q_n})}&\frac{tanh(\tilde{q_n})}{1+tanh^2(\tilde{q_n})}
+            \frac{1}{cosh^2(\tilde{q_1})}\frac{tanh(\tilde{q_1})}{1+tanh^2(\tilde{q_1})}\\
+            \frac{1}{cosh^2(\tilde{q_2})}\frac{tanh(\tilde{q_2})}{1+tanh^2(\tilde{q_2})}\\
+            \vdots\\
+            \frac{1}{cosh^2(\tilde{q_n})}\frac{tanh(\tilde{q_n})}{1+tanh^2(\tilde{q_n})}
         \end{bmatrix}
         \quad\text{y}\quad
         atan(\dot{q})=
@@ -215,6 +215,7 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
 \end{equation}
 \begin{enumerate}
     \item Desmostrar la existencia y unicidad del punto de equilibrio de la ecuación en lazo cerrado.
+    \item Proponer una función candidata de Lyapunov (demostrar analíticamente que dicha función se definida positiva).
     \item Demostrar la estabilidad del punto de equilibrio.
     \item Demostrar que la componente de regulación de (\ref{eq:tau}) se encuentra acotada.
     \item Realizar la simulación del algoritmo de control (\ref{eq:tau}) con el modelo dinámico numérico de un robot de 2 gld, tomando en cuenta las siguientes referencias:$\begin{bmatrix}
@@ -232,17 +233,17 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
         \begin{split}
             M(q)\ddot{q}+C(q,\dot{q})\dot{q}+g(q)+B\dot{q}&=K_p
             \begin{bmatrix}
-                \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
             \end{bmatrix}
             -K_vatan(\dot{q})+g(q)\\
             M(q)\ddot{q}+C(q,\dot{q})\dot{q}+\cancel{g(q)}+B\dot{q}&=K_p
             \begin{bmatrix}
-                \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
             \end{bmatrix}
             -K_vatan(\dot{q})+\cancel{g(q)}\\
             M(q)\ddot{q}+C(q,\dot{q})\dot{q}+B\dot{q}&=K_p
             \begin{bmatrix}
-                \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
             \end{bmatrix}
             -K_vatan(\dot{q})
         \end{split}
@@ -253,7 +254,7 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
         \begin{split}
             \ddot{q}&=M^{-1}(q)\lbrack K_p
             \begin{bmatrix}
-                \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
             \end{bmatrix}
             -K_vatan(\dot{q})-C(q,\dot{q})\dot{q}-B\dot{q}\rbrack
         \end{split}
@@ -277,7 +278,7 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
                 -\dot{q}\\
                 M^{-1}(q)\lbrack K_p
             \begin{bmatrix}
-                \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
             \end{bmatrix}
             -K_vatan(\dot{q})-C(q,\dot{q})\dot{q}-B\dot{q}\rbrack
             \end{bmatrix}
@@ -296,7 +297,7 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
                 -\dot{q}\\
                 M^{-1}(q)\lbrack K_p
             \begin{bmatrix}
-                \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
             \end{bmatrix}
             -K_vatan(\dot{q})-C(q,\dot{q})\dot{q}-B\dot{q}\rbrack
             \end{bmatrix}=\begin{bmatrix}
@@ -307,15 +308,15 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
         \label{eq:demonstration}
     \end{equation}
     \begin{itemize}
-        \item El primer componente de la ecuación (\ref{eq:demonstration}) satisface $-\dot{q}=-I\dot{q}\leftrightarrow \dot{q}=0$ esto ya que $I \in \mathbb{R}^{n\times n}$ es la matriz identidad.
-        \item Para el segundo termino de la ecuación (\ref{eq:demonstration}) se tiene que $M(q)>0$
+        \item El primer término de la ecuación (\ref{eq:demonstration}) satisface $-\dot{q}=-I\dot{q}\leftrightarrow \dot{q}=0$ esto ya que $I \in \mathbb{R}^{n\times n}$ es la matriz identidad.
+        \item Para el segundo término de la ecuación (\ref{eq:demonstration}) se tiene que $M(q)>0$
         por propiedad de ser definida positiva $M^{-1}(q)$ sera tambien definida positiva, entonces para que se cumpla la condición $M^{-1}(q)\lbrack K_p
         \begin{bmatrix}
-            \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
         \end{bmatrix}
         -K_vatan(\dot{q})-C(q,\dot{q})\dot{q}-B\dot{q}\rbrack=0$, se debe cumplir que $\lbrack K_p
         \begin{bmatrix}
-            \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
         \end{bmatrix}
         -K_vatan(\dot{q})-C(q,\dot{q})\dot{q}-B\dot{q}\rbrack=0$, analizando esta expresión
         \begin{equation}
@@ -327,9 +328,234 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
         \end{equation}
         El ultimo factor que falta analizar es $K_p
         \begin{bmatrix}
-            \frac{1}{cosh^2(\tilde{q})}&\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
-        \end{bmatrix}$, en esta expresion dado que $K_p$ es 
+            \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+        \end{bmatrix}$, en esta expresion dado que $K_p$ es definida positiva entonces $\begin{bmatrix}
+            \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+        \end{bmatrix}=0\leftrightarrow\tilde{q}=0$, si gráficamos esta función podremos ver el comportamiento acotado del regulador propuesto.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=12cm, height=7cm]{IMAGENES/tanh.png}
+            \caption{Regulador Acotado.}
+            \label{fig:regulador}
+        \end{figure}
+
+        Entonces podemos concluir que el punto $\lbrack\tilde{q},\dot{q} \rbrack=0\in\mathbb{R}^{2n}$ existe y es el único punto de equilibrio del sistema. 
     \end{itemize} 
+    \item Se propondra la siguiente función candidata de Lyapunov compuesta por la suma de la energía cinética del robot manipulador y energia potencial artificial siguiendo la regla de diseño (\ref{eq:energy}).
+    \begin{equation}
+        \begin{split}
+            V(\tilde{q},\dot{q})&=\frac{1}{2}\dot{q}^TM(q)\dot{q}+\frac{1}{2}
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q_1})+1)}\\
+                \sqrt{ln(tanh^2(\tilde{q_2})+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(\tilde{q_n})+1)}
+            \end{bmatrix}^T
+            K_p
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q_1})+1)}\\
+                \sqrt{ln(tanh^2(\tilde{q_2})+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(\tilde{q_n})+1)}
+            \end{bmatrix}
+        \end{split}
+        \label{eq:candidate}
+    \end{equation}
+    Esta función candidata de Lyapunov debe ser definida positiva, lo cual se procederá a demostrar.
+    \begin{itemize}
+        \item El primer sumado $\frac{1}{2}\dot{q}^TM(q)\dot{q}$ se puede observar que tiene la forma $x^TPx$ el cual según el teorema de silvestrer [\cite{reyes}] será definida positiva si y solo si la matriz $P$ es definida positiva. En este caso por propiedad del modelo dinámico la matriz de inercia $M(q)$ es definida positiva.
+        \item En el caso de la energia potencial artificial se puede observa que $\mathcal{U}_a(K_p,\tilde{q})=\mathcal{U}_a(K_p,0)=0$
+        \begin{equation}
+            \begin{split}
+                \mathcal{U}_a(K_p,0)&=
+                \frac{1}{2}
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(0)+1)}\\
+                \sqrt{ln(tanh^2(0)+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(0)+1)}
+            \end{bmatrix}^T
+            K_p
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(0)+1)}\\
+                \sqrt{ln(tanh^2(0)+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(0)+1)}
+            \end{bmatrix}\\
+            \mathcal{U}_a(K_p,0)&=
+                \frac{1}{2}
+            \begin{bmatrix}
+                \sqrt{ln(1)}\\
+                \sqrt{ln(1)}\\
+                \vdots\\
+                \sqrt{ln(1)}
+            \end{bmatrix}^T
+            K_p
+            \begin{bmatrix}
+                \sqrt{ln(1)}\\
+                \sqrt{ln(1)}\\
+                \vdots\\
+                \sqrt{ln(1)}
+            \end{bmatrix}\\
+            \mathcal{U}_a(K_p,0)&=
+                \frac{1}{2}
+            \begin{bmatrix}
+                0\\
+                0\\
+                \vdots\\
+                0
+            \end{bmatrix}^T
+            K_p
+            \begin{bmatrix}
+                0\\
+                0\\
+                \vdots\\
+                0
+            \end{bmatrix}\\
+            \mathcal{U}_a(K_p,0)&=0
+            \end{split}
+            \label{eq:prove}
+        \end{equation}
+        Tambien se puede observar que $\mathcal{U}_a(K_p,\tilde{q})>0$ si $\tilde{q}\not = 0$, se puede concluir que $\mathcal{U}_a(K_p,\tilde{q})$ es definida positiva local ya que $\exists \rho>0,\gamma>)0:0<\mathcal{U}_a(K_p,\tilde{q})<\gamma$, se sabe que la suma de funciones definidas positivas es otra función definida positiva por lo tanto.
+        \begin{equation}
+            \begin{split}
+                \frac{1}{2}\dot{q}^TM(q)\dot{q}>0\quad\text{y}\quad \mathcal{U}_a(K_p,\tilde{q})&>0\quad \therefore \quad \frac{1}{2}\dot{q}^TM(q)\dot{q}+\mathcal{U}_a(K_p,\tilde{q})>0\\
+                V(\tilde{q},\dot{q})&=\frac{1}{2}\dot{q}^TM(q)\dot{q}+\mathcal{U}_a(K_p,\tilde{q})>0
+            \end{split}
+            \label{eq:defined_positive}
+        \end{equation}
+    \end{itemize}
+    \item Para demostrar la estabilidad del punto se equilibrio se procederá a derivar la ecuación (\ref{eq:candidate}) con respecto al tiempo para obtener la potencia.
+    
+    \begin{equation}
+        \begin{split}
+            \dot{V}(\tilde{q},\dot{q})&=\frac{d}{dt}\begin{bmatrix}
+                \frac{1}{2}\dot{q}^TM(q)\dot{q}+\frac{1}{2}
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q_1})+1)}\\
+                \sqrt{ln(tanh^2(\tilde{q_2})+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(\tilde{q_n})+1)}
+            \end{bmatrix}^T
+            K_p
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q_1})+1)}\\
+                \sqrt{ln(tanh^2(\tilde{q_2})+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(\tilde{q_n})+1)}
+            \end{bmatrix}
+            \end{bmatrix}\\
+            \dot{V}(\tilde{q},\dot{q})&=
+            \frac{d}{dt}\begin{bmatrix}
+                \frac{1}{2}\lbrack\dot{q}^TM(q)\dot{q}))\rbrack
+            \end{bmatrix}
+            +\frac{d}{dt}
+            \begin{bmatrix}
+                \frac{1}{2}
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q_1})+1)}\\
+                \sqrt{ln(tanh^2(\tilde{q_2})+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(\tilde{q_n})+1)}
+            \end{bmatrix}^T
+            K_p
+            \begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q_1})+1)}\\
+                \sqrt{ln(tanh^2(\tilde{q_2})+1)}\\
+                \vdots\\
+                \sqrt{ln(tanh^2(\tilde{q_n})+1)}
+            \end{bmatrix}
+            \end{bmatrix}\\
+            \frac{d}{dt}
+            \begin{bmatrix}
+            \frac{1}{2}\lbrack\dot{q}^TM(q)\dot{q}\rbrack
+            \end{bmatrix}&=\frac{1}{2}\lbrack\dot{q}^TM(q)\ddot{q}+\ddot{q}^TM(q)\dot{q}+\dot{q}^T\dot{M}(q)\dot{q}\rbrack\\
+            \frac{d}{dt}
+            \begin{bmatrix}
+            \frac{1}{2}\lbrack\dot{q}^TM(q)\dot{q}\rbrack
+            \end{bmatrix}&=\frac{1}{2}\lbrack\dot{q}^TM(q)\ddot{q}+\dot{q}^TM(q)\ddot{q}+\dot{q}^T\dot{M}(q)\dot{q}\rbrack\\
+            \frac{d}{dt}
+            \begin{bmatrix}
+            \frac{1}{2}\lbrack\dot{q}^TM(q)\dot{q}\rbrack
+            \end{bmatrix}&=\frac{1}{2}\lbrack2\dot{q}^TM(q)\ddot{q}+\dot{q}^T\dot{M}(q)\dot{q}\rbrack\\
+            \frac{d}{dt}
+            \begin{bmatrix}
+            \frac{1}{2}\lbrack\dot{q}^TM(q)\dot{q}\rbrack
+            \end{bmatrix}&=\dot{q}^TM(q)\ddot{q}+\frac{1}{2}\dot{q}^T\dot{M}(q)\dot{q}\\
+        \end{split}
+        \label{eq:derivative}
+    \end{equation}
+
+    \begin{equation}
+        \begin{split}
+            \frac{d}{dt}\mathcal{U}_a(K_p,\tilde{q})&=\frac{d}{dt}(\frac{1}{2}\begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q})+1)}
+            \end{bmatrix}^TK_p\begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q})+1)}
+            \end{bmatrix})\\
+            \frac{d}{dt}\mathcal{U}_a(K_p,\tilde{q})&=\frac{1}{2}2\begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q})+1)}
+            \end{bmatrix}^TK_p\frac{d}{dt}\begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q})+1)}
+            \end{bmatrix}\\
+            \frac{d}{dt}\mathcal{U}_a(K_p,\tilde{q})&=\frac{1}{2}2\begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q})+1)}
+            \end{bmatrix}^TK_p\begin{bmatrix}
+                \frac{2tanh(\tilde{q})\dot{\tilde{q}}}{2\sqrt{ln(tanh^2(\tilde{q})+1)}(tanh^2(\tilde{q})+1)cosh^2(\tilde{q})}
+            \end{bmatrix}\\
+            \frac{d}{dt}\mathcal{U}_a(K_p,\tilde{q})&=\frac{1}{\cancel{2}}\cancel{2}\cancel{\begin{bmatrix}
+                \sqrt{ln(tanh^2(\tilde{q})+1)}
+            \end{bmatrix}}^TK_p\begin{bmatrix}
+                \frac{\cancel{2}tanh(\tilde{q})}{\cancel{2}\cancel{\sqrt{ln(tanh^2(\tilde{q})+1)}}(tanh^2(\tilde{q})+1)cosh^2(\tilde{q})}
+            \end{bmatrix}\dot{\tilde{q}}\\
+            \frac{d}{dt}\mathcal{U}_a(K_p,\tilde{q})&=-
+            \begin{bmatrix}
+                \frac{tanh(\tilde{q})}{(tanh^2{(\tilde{q})}+1)cosh^2(\tilde{q})}
+            \end{bmatrix}^TK_p\dot{q}\\
+        \end{split}
+        \label{eq:derivative_1}
+    \end{equation}
+    Usando las ecuaciones (\ref{eq:derivative}), (\ref{eq:derivative_1}) y (\ref{eq:demonstration})se tendrá
+    \begin{equation}
+        \begin{split}
+            \dot{V}(\tilde{q},\dot{q})&=\dot{q}^TM(q)\ddot{q}+\frac{1}{2}\dot{q}^T\dot{M}(q)\dot{q}-
+            \begin{bmatrix}
+                \frac{tanh(\tilde{q})}{(tanh^2{(\tilde{q})}+1)cosh^2(\tilde{q})}
+            \end{bmatrix}^TK_p\dot{q}\\
+            \dot{V}(\tilde{q},\dot{q})&=\dot{q}^T\cancel{M(q)}\cancel{M^{-1}(q)}\lbrack K_p
+            \begin{bmatrix}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \end{bmatrix}
+            -K_vatan(\dot{q})-C(q,\dot{q})\dot{q}-B\dot{q}\rbrack\\&+\frac{1}{2}\dot{q}^T\dot{M}(q)\dot{q}-\dot{q}^TK_p
+            \begin{bmatrix}
+                \frac{tanh(\tilde{q})}{(tanh^2{(\tilde{q})}+1)cosh^2(\tilde{q})}
+            \end{bmatrix}\\
+            \dot{V}(\tilde{q},\dot{q})&=\dot{q}^T\lbrack K_p
+            \begin{bmatrix}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \end{bmatrix}
+            -K_vatan(\dot{q})-C(q,\dot{q})\dot{q}-B\dot{q}\rbrack\\&+\frac{1}{2}\dot{q}^T\dot{M}(q)\dot{q}-\dot{q}^TK_p
+            \begin{bmatrix}
+                \frac{tanh(\tilde{q})}{(tanh^2{(\tilde{q})}+1)cosh^2(\tilde{q})}
+            \end{bmatrix}\\
+            \dot{V}(\tilde{q},\dot{q})&=\cancel{\dot{q}^T K_p
+            \begin{bmatrix}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \end{bmatrix}}
+            -\dot{q}^TK_vatan(\dot{q})-\dot{q}^TC(q,\dot{q})\dot{q}-\dot{q}^TB\dot{q}\\&+\frac{1}{2}\dot{q}^T\dot{M}(q)\dot{q}-\cancel{\dot{q}^TK_p
+            \begin{bmatrix}
+                \frac{tanh(\tilde{q})}{(tanh^2{(\tilde{q})}+1)cosh^2(\tilde{q})}
+            \end{bmatrix}}\\
+            \dot{V}(\tilde{q},\dot{q})&=-\dot{q}^TK_vatan(\dot{q})-\cancel{\dot{q}^TC(q,\dot{q})\dot{q}}-\dot{q}^TB\dot{q}+\cancel{\frac{1}{2}\dot{q}^T\dot{M}(q)\dot{q}}\\
+            \dot{V}(\tilde{q},\dot{q})&=-\dot{q}^TK_vatan(\dot{q})-\dot{q}^TB\dot{q}\leq 0\\
+        \end{split}
+        \label{eq:power}
+    \end{equation}
+    De la ecuación (\ref{eq:power}) se puede afirmar que $\dot{V}(\tilde{q},\dot{q})$ es semidefinida negativa, por lo tanto queda demostrada la estabilidad del punto de equilibrio.
+    \item En este apartado se demostrará que la norma euclideana de $\begin{bmatrix}
+        \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+    \end{bmatrix}$ es menor igual que una cota superior.
 \end{enumerate}
 \section{Conclusiones}
 \bibliographystyle{apacite}
