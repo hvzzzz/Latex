@@ -600,7 +600,7 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
         \end{split}
         \label{eq:donex2}
     \end{equation}
-    De la ecuación (\ref{eq:donex2}) se puede concluir que la componente de regulación esta acotada, adicionalmente a esto se puede afirmar que.
+    De la ecuación (\ref{eq:donex2}) se puede concluir que la componente de regulación esta acotada, adicionalmente a esto se puede afirmar [\cite{reyes2019family}].
     \begin{equation}
         \begin{split}
             \begin{vmatrix}\begin{vmatrix}\begin{bmatrix}
@@ -625,7 +625,7 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
     
     Como se puede observar en las figuras ambas componentes se encuentran saturadas, para valores positivos muy grandes y negativos muy pequeños del error $\tilde{q}$, esta componente no tendrá efecto, en el caso de que $\tilde{q}$ sea pequeño o lo suficientemente grande, esta componente trabajará como un resorte no lineal de comportamiento hiperbólico. La componente $atan(\dot{q})$ producirá un efecto de amortiguamiento que atrapará los picos, sobreimpulsos de la repuesta transitoria para valores de $\dot{q}$ lo suficientemente grandes. 
 
-    Para ejecutar la simulación se incluirán las siguientes lineas de codigo al archivo que contiene el algoritmo de control y la posición deseada $\begin{bmatrix}
+    Para ejecutar la simulación se incluirán las siguientes lineas de código al archivo que contiene el algoritmo de control y la posición deseada $\begin{bmatrix}
         90^\circ,90^\circ
     \end{bmatrix}^T$.
     \lstinputlisting[language=matlab]{Matlab/tau.m}
@@ -644,16 +644,47 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
         \label{fig:position_1}
     \end{figure}
 
-    En las figuras (\ref{fig:position}) y (\ref{fig:position_1}) se puede observar el efecto de las componentes de amortiguamiento y regulación del esquema de control, las curvas no presentan picos ni sobreimpulsos en su respuesta transitoria, en el caso de la figura (\ref{fig:position_1}) se disminuyo la ganancia $K_p$ con respecto a la figura (\ref{fig:position}) esto produjo un ligero sobreimpulso en la respuesta transitoria de la posición del hombro, tambien se observa que el codo alcanzo la posición deseada más rapido, ademas de ello, tanto el hombro como el codo llegan a $90^\circ$ suavemente esto debido a que el punto de equilibrio fue demostrado por lo que se tiene garantia que el algoritmo de control funciona antes de realizar la simulación.
+    En las figuras (\ref{fig:position}) y (\ref{fig:position_1}) se puede observar el efecto de las componentes de amortiguamiento y regulación del esquema de control, las curvas no presentan picos ni sobreimpulsos en su respuesta transitoria, en el caso de la figura (\ref{fig:position_1}) se disminuyo la ganancia $K_p$ con respecto a la figura (\ref{fig:position}) esto produjo un ligero sobreimpulso en la respuesta transitoria de la posición del codo, tambien se observa que el hombro alcanzo la posición deseada más rapido, ademas de ello, tanto el hombro como el codo llegan a $90^\circ$ suavemente esto debido a que el punto de equilibrio fue demostrado por lo que se tiene garantia que el algoritmo de control funciona antes de realizar la simulación.
 
     \item En el apartado anterior se vio que el esquema de control propuesto corresponde a un regulador saturado, por lo que la regla de sintonía por lo que se propondrá una función de la posición deseada y de los torques máximos para el hombro y codo del robot manipulador según una función hiperbólica.
     
     La regla de sintonía propuesta es la siguiente.
     \lstinputlisting[language=matlab]{Matlab/sintonia.m}
+    
+    Usando la regla de sintonía propuesta se procederá a gráficar los pares aplicados asi como errores de posición.
+    %\vspace{50mm}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=14cm, height=5cm]{IMAGENES/par.jpg}
+        \caption{Pares Aplicados en las Articulaciones.}
+        \label{fig:par}
+    \end{figure}
+    
+    Se puede observar que los pares aplicados no superan la los valores máximos en ningun instante de la simulación.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=14cm, height=5cm]{IMAGENES/error.jpg}
+        \caption{Evolución del Error de Posición en el Tiempo.}
+        \label{fig:error}
+    \end{figure}
 
+    Como se demostró podemos observar que el error de posición converge asintóticamente a cero según transcurre el tiempo que ya fue atrapado por el atractor del punto de equilibrio[\cite{reyes2011robotica}].
 \end{enumerate}
 \section{Conclusiones}
-En el presente reporte se trabajarán aspectos importantes del algoritmo de control propuesto, primeramente, se considerará el caso general de un robot manipulador de n grados de libertad y luego la explicación cualitativa de este algoritmo aplicado a un robot manipulador de dos grados de libertad,con esta finalidad, se obtendrá la ecuación en lazo cerrado usando el modelo dinámico del robot de n grados de libertad y se procederá a demostrar la existencia del punto de equilibrio, seguidamente se propondrá una función candidata de Lyapunov analizando que esta, sea una función definida positiva, despues, se demostrará la estabilidad de este punto. Ademas de esto, se demostrará que la componente de regulación de este algoritmo de control se encuentra acotada. Finalmente se hará la simulación en MATLAB usando el modelo dinámico de un robot manipulador de dos grados de libertad y el valor numérico de los parametros físicos proporcionados.
+Se desarrollaron demostraciones usando un nuevo esquema de control, haciendo uso de la ecuacion en lazo cerrado en conjunto con el modelo dinámico del robot manipulador. En una primera instancia se hizo el tratamiento matemático para uno  de n grados de libertad. Posteriormente se dieron valores numéricos a las matrices de inercia, fricciones, par gravitacional para el caso de un robot manipulador de dos grados de libertad, esto con el objetivo de realizar simulaciones y analizar cualitativamente el comportamiento del algoritmo de control propuesto esto se realizo usando una version en $\mathbb{R}^{2\times2}$ del algoritmo de control cuya existencia de punto de equilibrio ya habia sido demostrada en $\mathbb{R}^{n\times n}$ por lo cual al ser $\mathbb{R}^{2\times2}$ un caso particular, se tenia seguridad de su correcto funcionamiento antes de realizar las simulaciones, este hecho fue comprobado luego de interpretar a los resultados de simulación obtenidos.
+
 \bibliographystyle{apacite}
 \bibliography{biblio}
+\newpage
+\section{Anexos}
+Código de simulación principal.
+\lstinputlisting[language=matlab]{Matlab/simurobot2gdl.m}
+Código de que contiene el modelo dinámico del robot de dos grados de libertad.
+\lstinputlisting[language=matlab]{Matlab/robot2gdl.m}
+\newpage
+Código que contiene el algoritmo de control
+\lstinputlisting[language=matlab]{Matlab/alg_control.m}
+Grafica de funciones
+\lstinputlisting[language=Python]{IMAGENES/plot.py}
 \end{document}
