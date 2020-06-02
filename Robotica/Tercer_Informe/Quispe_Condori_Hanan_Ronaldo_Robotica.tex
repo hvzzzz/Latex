@@ -310,7 +310,7 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
     \begin{itemize}
         \item El primer término de la ecuación (\ref{eq:demonstration}) satisface $-\dot{q}=-I\dot{q}\leftrightarrow \dot{q}=0$ esto ya que $I \in \mathbb{R}^{n\times n}$ es la matriz identidad.
         \item Para el segundo término de la ecuación (\ref{eq:demonstration}) se tiene que $M(q)>0$
-        por propiedad de ser definida positiva $M^{-1}(q)$ sera tambien definida positiva, entonces para que se cumpla la condición $M^{-1}(q)\lbrack K_p
+        por propiedad de ser definida positiva $M^{-1}(q)$ será tambien definida positiva, entonces para que se cumpla la condición $M^{-1}(q)\lbrack K_p
         \begin{bmatrix}
             \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
         \end{bmatrix}
@@ -553,11 +553,107 @@ Donde $K_p$,$K_v$ $\in \mathbb{R}^{n\times n}$ son matrices definidas positivas;
         \label{eq:power}
     \end{equation}
     De la ecuación (\ref{eq:power}) se puede afirmar que $\dot{V}(\tilde{q},\dot{q})$ es semidefinida negativa, por lo tanto queda demostrada la estabilidad del punto de equilibrio.
-    \item En este apartado se demostrará que la norma euclideana de $\begin{bmatrix}
+    \item Para esta demostración se analizará el comportamiento del vector $\begin{bmatrix}
         \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
-    \end{bmatrix}$ es menor igual que una cota superior.
+    \end{bmatrix}$.
+
+    \begin{equation}
+        \begin{split}
+            f(\tilde{q})&=\begin{bmatrix}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \end{bmatrix}\\
+            \frac{d}{d(\tilde{q})}f(\tilde{q})&=g(\tilde{q})\\
+            \frac{d}{d(\tilde{q})}j(\tilde{q})&=-ag(\tilde{q})\\
+        \end{split}
+        \label{eq:upper_limit}
+    \end{equation}
+
+    Definimos una función decreciente $\frac{d}{d(\tilde{q})}j(\tilde{q})$ para encontrar una ODE.
+
+    \begin{equation}
+        \begin{split}
+            \frac{d}{d(\tilde{q})}j(\tilde{q})&=-ag(\tilde{q})\\
+            dj(\tilde{q})&=-ag(\tilde{q})d(\tilde{q})\\
+            \cancel{\int} \cancel{d}j(\tilde{q})&=\int-ag(\tilde{q})d(\tilde{q})\\
+            J(\tilde{q})-J(\tilde{q_0})&=-a\int g(\tilde{q})d(\tilde{q})\\
+            J(\tilde{q_0})&=a\int g(\tilde{q})d(\tilde{q})+J(\tilde{q})\\
+        \end{split}
+        \label{eq:lower_limit}
+    \end{equation}
+
+    Por el colorario de los numeros reales $a,b,c\in \mathbb{R}\rightarrow \quad a=b+c\leftrightarrow a>b\land a>c$ en la ecuación (\ref{eq:lower_limit}) se tendrá.
+    \begin{equation}
+        \begin{split}
+            J(\tilde{q_0})&>a\int g(\tilde{q})d(\tilde{q})\\
+        \end{split}
+        \label{eq:done}
+    \end{equation}
+    Reemplazando la ecuación (\ref{eq:upper_limit}) en (\ref{eq:done}) se puede afirmar.
+    \begin{equation}
+        \begin{split}
+            J(\tilde{q_0})&>a\begin{bmatrix}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \end{bmatrix}\\
+            \frac{J(\tilde{q_0})}{a}&>\begin{bmatrix}
+                \frac{1}{cosh^2(\tilde{q})}\frac{tanh(\tilde{q})}{1+tanh^2(\tilde{q})}
+            \end{bmatrix}\\
+        \end{split}
+        \label{eq:donex2}
+    \end{equation}
+    De la ecuación (\ref{eq:donex2}) se puede concluir que la componente de regulación esta acotada, adicionalmente a esto se puede afirmar que.
+    \begin{equation}
+        \begin{split}
+            \begin{vmatrix}\begin{vmatrix}\begin{bmatrix}
+                \frac{1}{cosh^2(\tilde{q_1})}\frac{tanh(\tilde{q_1})}{1+tanh^2(\tilde{q_1})}\\
+                \frac{1}{cosh^2(\tilde{q_2})}\frac{tanh(\tilde{q_2})}{1+tanh^2(\tilde{q_2})}\\
+                \vdots\\
+                \frac{1}{cosh^2(\tilde{q_n})}\frac{tanh(\tilde{q_n})}{1+tanh^2(\tilde{q_n})}
+            \end{bmatrix}\end{vmatrix}\end{vmatrix}&<\frac{J(\tilde{q_0})}{a}
+        \end{split}
+        \label{eq:euclidean}
+    \end{equation}
+    \item Se procederá a graficar las funciones que conforman el esquema de control propuesto en la ecuación (\ref{eq:tau}) para su análisis cualitativo, este esquema se usara en MATLAB para la simulación usando el modelo dinámico del robot de dos grados con los parametros numéricos proporcionados .
+    
+    \vspace{15mm}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=14cm, height=6cm]{IMAGENES/comportamiento.png}
+        \caption{Gráfica de Componentes del Esquema de Control.}
+        \label{fig:comportamiento}
+    \end{figure}
+    
+    Como se puede observar en las figuras ambas componentes se encuentran saturadas, para valores positivos muy grandes y negativos muy pequeños del error $\tilde{q}$, esta componente no tendrá efecto, en el caso de que $\tilde{q}$ sea pequeño o lo suficientemente grande, esta componente trabajará como un resorte no lineal de comportamiento hiperbólico. La componente $atan(\dot{q})$ producirá un efecto de amortiguamiento que atrapará los picos, sobreimpulsos de la repuesta transitoria para valores de $\dot{q}$ lo suficientemente grandes. 
+
+    Para ejecutar la simulación se incluirán las siguientes lineas de codigo al archivo que contiene el algoritmo de control y la posición deseada $\begin{bmatrix}
+        90^\circ,90^\circ
+    \end{bmatrix}^T$.
+    \lstinputlisting[language=matlab]{Matlab/tau.m}
+    Al ejecutar la simulación se tendrán las siguientes gráficas de la posición y error de posición.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=14cm, height=6cm]{IMAGENES/pos.jpg}
+        \caption{Evolución de la Posición en el Tiempo.}
+        \label{fig:position}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=14cm, height=6cm]{IMAGENES/pos1.jpg}
+        \caption{Evolución de la Posición en el Tiempo, $K_p$ Disminuido.}
+        \label{fig:position_1}
+    \end{figure}
+
+    En las figuras (\ref{fig:position}) y (\ref{fig:position_1}) se puede observar el efecto de las componentes de amortiguamiento y regulación del esquema de control, las curvas no presentan picos ni sobreimpulsos en su respuesta transitoria, en el caso de la figura (\ref{fig:position_1}) se disminuyo la ganancia $K_p$ con respecto a la figura (\ref{fig:position}) esto produjo un ligero sobreimpulso en la respuesta transitoria de la posición del hombro, tambien se observa que el codo alcanzo la posición deseada más rapido, ademas de ello, tanto el hombro como el codo llegan a $90^\circ$ suavemente esto debido a que el punto de equilibrio fue demostrado por lo que se tiene garantia que el algoritmo de control funciona antes de realizar la simulación.
+
+    \item En el apartado anterior se vio que el esquema de control propuesto corresponde a un regulador saturado, por lo que la regla de sintonía por lo que se propondrá una función de la posición deseada y de los torques máximos para el hombro y codo del robot manipulador según una función hiperbólica.
+    
+    La regla de sintonía propuesta es la siguiente.
+    \lstinputlisting[language=matlab]{Matlab/sintonia.m}
+
 \end{enumerate}
 \section{Conclusiones}
+En el presente reporte se trabajarán aspectos importantes del algoritmo de control propuesto, primeramente, se considerará el caso general de un robot manipulador de n grados de libertad y luego la explicación cualitativa de este algoritmo aplicado a un robot manipulador de dos grados de libertad,con esta finalidad, se obtendrá la ecuación en lazo cerrado usando el modelo dinámico del robot de n grados de libertad y se procederá a demostrar la existencia del punto de equilibrio, seguidamente se propondrá una función candidata de Lyapunov analizando que esta, sea una función definida positiva, despues, se demostrará la estabilidad de este punto. Ademas de esto, se demostrará que la componente de regulación de este algoritmo de control se encuentra acotada. Finalmente se hará la simulación en MATLAB usando el modelo dinámico de un robot manipulador de dos grados de libertad y el valor numérico de los parametros físicos proporcionados.
 \bibliographystyle{apacite}
 \bibliography{biblio}
 \end{document}
